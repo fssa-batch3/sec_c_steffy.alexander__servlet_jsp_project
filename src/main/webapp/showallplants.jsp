@@ -3,6 +3,8 @@
 <%@ page import="com.fssa.veeblooms.model.Plant"%>
 <%@ page import="com.fssa.veeblooms.service.*"%>
 <%@ page import="com.fssa.veeblooms.util.*"%>
+<%@ page import="com.fssa.veeblooms.validator.*"%>
+<%@ page import="com.fssa.veeblooms.dao.*"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +32,9 @@
 	<div class="right">
 		<%
 		//getting the plant arraylist from request object that has been set by the getservlet method
-		List<Plant> plants = (List<Plant>) request.getAttribute("plant");
+		PlantService plantservice = new PlantService(new PlantValidator(), new PlantDAO());
+		List<Plant> plants = plantservice.getAllPlants();
+		
 		Logger.info(plants + "plant");
 
 		///listing all the plant objects using foreach method

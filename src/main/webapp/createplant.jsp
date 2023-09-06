@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
 	<div class="header">
 		<a href="createplant.jsp" id="create_plant">Create a plant</a>
 		<a href="updateplant.jsp" id="update_plant">Update a plant</a>
@@ -25,7 +26,7 @@
 						type="url" id="image" name="mainimage" /></label> <label for="Title">
 						Price:<input type="text" id="price" name="price" />
 					</label>
-
+ 
 				</div>
 				<div class="details_page">
 					<label for="image_1"> image_1:<input type="text"

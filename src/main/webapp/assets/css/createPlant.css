@@ -1,257 +1,93 @@
-@charset "ISO-8859-1";
-
-* {
+/* Reset some default browser styles */
+html, body, div, h1, h2, p, form, label, input, select, button {
   margin: 0;
   padding: 0;
-  font-family: 'Kanit', sans-serif;
+  border: 0;
+  font-family: Arial, sans-serif;
 }
 
-body {
-  background-color: #F2F4F1;
+/* Style the container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  height: 80px;
-  background-color: #F2F4F1;
-
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-header a {
-  text-decoration: none;
-  color: #171a0f;
-  display: flex;
-  align-items: center;
-  font-family: "Carter One", cursive;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  padding-right: 30px;
-}
-#heading{
-  margin-top:60px;
-  margin-left:40px;
-  /* font-family: poppins; */
-  font-size: 30px;
-  color:#3d6921;
-  font-weight: 600;
-  letter-spacing: 1px;
-
-}
-.nav a:nth-child(4) img {
-  margin-right: 13px;
-}
-.nav a:hover{
-  border: solid #4c812a;
-  border-width: 0px 0px 3px 0px;
-transition: 0.05s ease;
-color: #0d5114;
-
-}
-#log {
-  width: 25px;
-  height: 25px;
-}
-
-.logo img {
-  width: 110px;
-  height: 65px;
-  margin-left: 25px;
-}
-
-.nav a {
-  margin: 10px;
-  text-decoration: none;
-  margin-right: 50px;
-  font-size: 18px;
-  color: #30650f;
-}
-
-#cart1 {
-  width: 80px;
-  height: 60px;
-}
-#cart1:hover {
-border: none;
-outline: none;
-}
-#profile_logo{
-  width:40px;
-  height:40px;
-
-}
-#profile_logo:hover{
-  border: none;
-outline: none;
-
-}
-#login_title {
-  /* margin-left: 14px; */
-  /* font-family: "Carter One", cursive; */
-  padding: 8px 15px;
-  background-color: #3d6921;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 3px;
-  margin-right: 10px;
-}
-#login_title:hover {
-  background-color: white;
-  color: #3d6921;
-  cursor: pointer;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    
-}
-
-#log {
-  border: none;
-    outline: none;
-  
-}
-/* header ends */
-
+/* Style the header links */
 .header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #194322;
-  color: #ffffff;
+  background-color: #333;
+  text-align: center;
   padding: 10px;
 }
 
-.header p {
-  margin: 0;
-  cursor: pointer;
+.header a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
-/* style the form */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.full_form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 30px;
+/* Style the form and card details */
+#form {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .card_details {
-  display: flex;
-  flex-direction: column;
   margin-right: 20px;
-}
-
-.card_details label {
-  margin-bottom: 10px;
-}
-
-.card_details input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
+  float: left;
+  width: 45%;
 }
 
 .details_page {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
+  float: left;
+  width: 45%;
 }
 
-.details_page label {
+/* Style form elements */
+label {
+  display: block;
   margin-bottom: 10px;
 }
 
-.details_page input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-.about_the_product {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.about_the_product p {
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-.about_the_product textarea {
+input[type="text"],
+input[type="url"],
+select {
   width: 100%;
-  padding: 5px;
-  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* style the radio buttons and buttons */
-#plant_category,
-#seed_category {
-  margin-right: 10px;
-}
-
-button {
-  padding: 8px 16px;
-  background-color: #194322;
+/* Style the button */
+#create {
+  background-color: #333;
   color: #fff;
+  padding: 10px 20px;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-right: 10px;
+  font-size: 16px;
 }
 
-button:hover {
-  background-color:#416d4a;
+/* Style the select box */
+select {
+  height: 34px;
 }
 
-/* hide the update form initially */
-.not_view {
-  display: none;
+/* Add some spacing */
+br {
+  clear: both;
 }
 
-/* style the update form */
-#update_form {
-  margin-top: 30px;
+/* Style links */
+a {
+  text-decoration: none;
+  color: #333;
 }
 
-#update_form p {
-  margin-top: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.update_details {
-  margin-top: 20px;
-}
-
-.update_details label {
-  margin-bottom: 10px;
-}
-
-.update_details input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-.update_details textarea {
-  width: 100%;
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
+/* Hover effect for links */
+a:hover {
+  color: #666;
 }

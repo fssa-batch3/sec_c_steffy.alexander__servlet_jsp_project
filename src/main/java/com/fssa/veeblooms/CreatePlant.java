@@ -27,6 +27,9 @@ import com.fssa.veeblooms.validator.PlantValidator;
 
 @WebServlet("/CreatePlant")
 public class CreatePlant extends HttpServlet {
+	
+
+
 	private static final long serialVersionUID = 1L;
        
 
@@ -50,7 +53,7 @@ public class CreatePlant extends HttpServlet {
 		
 		Plant plant = new Plant();
 		
-		plant.setPlantName(request.getParameter("plantName"));
+		plant.setPlantName(request.getParameter("plantName")); 
 		plant.setPlantImagesUrl(images);
 		plant.setPlantType(PlantTypeEnum.valueOf(request.getParameter("plantType")));
 		plant.setPlantHeight(Float.parseFloat(request.getParameter("plantHeight")));
@@ -61,11 +64,13 @@ public class CreatePlant extends HttpServlet {
 		PlantService plantService= new PlantService();
 		plantService.setPlantDAO(new PlantDAO());
 		plantService.setPlantValidator(new PlantValidator());
-//		out.println();
+
 		Logger.info(plant);
 		try {
 			plantService.addPlant(plant);
+			response.sendRedirect("./showallplants.jsp");
 			System.out.println("success");
+
 		} catch (CustomException | DAOException | SQLException e) {
 			Logger.info(e.getMessage());
 			e.printStackTrace();
@@ -73,11 +78,6 @@ public class CreatePlant extends HttpServlet {
 		
 		
 	}
-	
-	
-
-
-	
 
 
 }

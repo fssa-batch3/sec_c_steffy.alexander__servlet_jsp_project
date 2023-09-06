@@ -36,7 +36,7 @@ public class UpdatePlant extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
 		String plantname= request.getParameter("plantname");
-		System.out.println(plantname+"gyvhj");
+		System.out.println(plantname);
 		plantService.setPlantDAO(new PlantDAO());
 		plantService.setPlantValidator(new PlantValidator());
 		try {
@@ -47,7 +47,7 @@ public class UpdatePlant extends HttpServlet {
 			System.out.println(plant+"gyvhj");
 			RequestDispatcher rd= request.getRequestDispatcher("./updateplant.jsp");
 			rd.forward(request, response);
-			
+		      response.sendRedirect(request.getContextPath()+ "/showallplants.jsp");
 		} catch (DAOException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -80,6 +80,7 @@ public class UpdatePlant extends HttpServlet {
 		System.out.println(plant);
 		try {
 			plantService.updatePlant(plant); 
+			response.sendRedirect("showallplants.jsp");
 			Logger.info("success");
 		} catch (CustomException | DAOException | SQLException e) {
 			System.out.println(e.getMessage());
