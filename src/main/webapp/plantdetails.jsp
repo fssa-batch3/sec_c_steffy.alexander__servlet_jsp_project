@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>veeblooms_plantdetails</title>
 <link rel="stylesheet" href="./assets/css/details.css">
 
 </head>
