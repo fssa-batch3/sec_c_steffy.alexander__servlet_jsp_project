@@ -24,7 +24,7 @@
   Logger.info(id+"  id");
     
     PlantService plantService = new PlantService();
-    //getting the plant obj by using id
+    //getting the plant obj 
    Plant plant= plantService.getPlantById(id); 
    Logger.info(plant+"  plant");
    
