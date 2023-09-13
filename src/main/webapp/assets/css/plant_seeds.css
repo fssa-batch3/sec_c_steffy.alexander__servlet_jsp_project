@@ -165,6 +165,10 @@ height:80px;
 /* background-repeat: no-repeat; */
 
 }
+.search_box a{
+	color:black;
+	text-decoration: none;
+}
 #search{
     background-image: url("../images/search.png");
     background-size:28px;

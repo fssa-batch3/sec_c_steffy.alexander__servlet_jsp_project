@@ -3,10 +3,13 @@
     <%@ page import="com.fssa.veeblooms.model.Plant" %>
 <%@ page import="com.fssa.veeblooms.service.*" %>
 <%@ page import="com.fssa.veeblooms.util.*" %>
+<%@ page import="com.fssa.veeblooms.util.*" %>
+<%@ page import="com.fssa.veeblooms.enumclass.*" %>
+
 
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
-<html>
+<html>	
 <head>
 <meta charset="ISO-8859-1">
 <title>veeblooms_plantdetails</title>
@@ -22,7 +25,7 @@
     
     PlantService plantService = new PlantService();
     //getting the plant obj by using id
-   Plant plant= plantService.getPlantById(id);
+   Plant plant= plantService.getPlantById(id); 
    Logger.info(plant+"  plant");
    
     %>
@@ -81,7 +84,7 @@
         <ul>
           <li>Plant Name: <%=plant.getPlantName() %> </li>
           <li>Type: <%=plant.getPlantType() %> </li>
-          <li>Height: <%=plant.getPlantHeight() %> </li>
+          <li>Height: <%=plant.getPlantHeight() %> feet </li>
         </ul>
         <table>
           <thead>

@@ -15,6 +15,7 @@
 		<a href="createplant.jsp" id="create_plant">Create a plant</a> <a
 			href="updateplant.jsp" id="update_plant">Update a plant</a> <a
 			href="deleteplant.jsp">Delete a plant</a>
+			<a href="./home.jsp">Home</a>
 	</div>
 
 	<div class="container">

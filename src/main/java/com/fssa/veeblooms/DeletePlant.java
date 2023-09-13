@@ -28,7 +28,7 @@ public class DeletePlant extends HttpServlet {
 			plantService.deletePlant(plantService.getPlantIdByName(name));
 			System.out.println("Deleted plant Successfully");
 			
-			response.sendRedirect("./showallplants.jsp");
+			response.sendRedirect("./ShowAllPlant");
 			
 		} catch (DAOException | SQLException e) {
 			System.out.println("Delete plant failed");

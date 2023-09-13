@@ -5,8 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>veeblooms_createplant</title>
-<link rel="stylesheet" href="./assets/css/createPlant.css" />
+
+<link rel="stylesheet" href="./assets/css/notify.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="stylesheet" href="./assets/css/createPlant.css" />
 </head>
 <body>
 
@@ -14,14 +16,15 @@
     <a href="createplant.jsp" id="create_plant">Create a plant</a>
     <a href="updateplant.jsp" id="update_plant">Update a plant</a>
     <a href="deleteplant.jsp">Delete a plant</a>
-</div>
+    <a href="./home.jsp">Home</a>
+</div> 
 
 <div class="container">
     <form id="form" class="view" action="./CreatePlant" method="post" >
         <div class="full_form">
             <div class="card_details">
                 <label for="name" class="form-label"> Name:</label>
-                <input class="form-control" type="text" id="name" name="plantName" title="Plantname should only contain alphabets" placeholder="Enter plant name"  pattern="[A-Za-z]{1,24}" required />
+                <input class="form-control" type="text" id="name" name="plantName" title="Plantname should only contain alphabets" placeholder="Enter plant name" pattern="^[A-Za-z\s\-']+$" required />
                 
                 <label for="image" class="form-label">Image url:</label>
                 <input type="url" id="image" name="mainimage" class="form-control" placeholder="Enter image URL" required />
@@ -69,6 +72,15 @@
         <button id="create" type="submit" value="submit">Create</button>
     </form>
 </div>
+
+<script src="./assets/js/notify.js"></script>
+
+
+<script>
+
+
+
+</script>
 
 
 </body>

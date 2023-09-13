@@ -6,7 +6,7 @@
 
 	<div class="nav">
 
-		<a href="../index.html">Home</a> <a href="./plant.html">Plants</a> <a
+		<a href="./home.jsp">Home</a> <a href="./plant.html">Plants</a> <a
 			href="./seeds.html">Seeds</a> <a href="./blog.html">Blog</a> <a
 			id="profile_logo" href="/pages/profile.html"><img
 			id="profile_logo" src="./assets/images/girl.png" alt=""> </a> <a
@@ -14,6 +14,6 @@
 			src="./assets/images/cart logo.png" alt="cart">		</a> 
 
 		<a id="log" href="./pages/login.html"> </a>
-		<a href="./createplant.jsp">Create a plant</a>
+		<a href="./createplant.jsp">Admin</a>
 		</div>
 </header>

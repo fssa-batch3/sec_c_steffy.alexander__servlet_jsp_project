@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fssa.veeblooms.Enum.HybridEnum;
-import com.fssa.veeblooms.Enum.PlantTypeEnum;
 import com.fssa.veeblooms.dao.PlantDAO;
+import com.fssa.veeblooms.enumclass.HybridEnum;
+import com.fssa.veeblooms.enumclass.PlantTypeEnum;
 import com.fssa.veeblooms.exception.CustomException;
 import com.fssa.veeblooms.exception.DAOException;
 import com.fssa.veeblooms.model.Plant;
@@ -69,11 +69,12 @@ public class CreatePlant extends HttpServlet {
             plantService.addPlant(plant);
 
             // Redirect to a JSP page on success
-            response.sendRedirect("./showallplants.jsp");
+            response.sendRedirect("./ShowAllPlant");
             System.out.println("success");
 
         } catch (CustomException | DAOException | SQLException e) {
             // Handle exceptions by logging and printing the stack trace
+        	response.sendRedirect("./createplant.jsp");
             Logger.info(e.getMessage());
             e.printStackTrace();
         }

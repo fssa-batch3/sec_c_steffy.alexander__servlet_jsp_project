@@ -24,17 +24,34 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<h2 id="heading">PLANTS</h2>
-	<div class="search_box">
-		<input type="search" id="search" placeholder="Search">
 
-	</div>
+
+
+	<form action="./SearchItem">
+		<div class="search_box">
+			<input type="search" id="search" placeholder="Search" name="search">
+		
+
+		</div>
+	</form>
+
 
 	<div class="right">
 		<%
 		//getting the plant arraylist from request object that has been set by the getservlet method
-		PlantService plantservice = new PlantService(new PlantValidator(), new PlantDAO());
-		List<Plant> plants = plantservice.getAllPlants();
-		
+
+		List<Plant> allPlants = (List<Plant>) request.getAttribute("allplants");
+
+		List<Plant> searchedPlants = (List<Plant>) request.getAttribute("searchedPlants");
+
+		List<Plant> plants;
+		if (searchedPlants == null || searchedPlants.size() == 0) {
+
+			plants = allPlants;
+		} else {
+			plants = searchedPlants;
+		}
+
 		Logger.info(plants + "plant");
 
 		///listing all the plant objects using foreach method
@@ -43,7 +60,8 @@
 
 			//finding the plant id by using getplantidbyname method in plantservice
 		%>
-		<a href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">
+		<a
+			href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">
 
 			<div class="box1">
 				<div class="imgtrend" alt="trend">
@@ -66,5 +84,6 @@
 		%>
 	</div>
 	<div class="right2"></div>
+
 </body>
 </html>
