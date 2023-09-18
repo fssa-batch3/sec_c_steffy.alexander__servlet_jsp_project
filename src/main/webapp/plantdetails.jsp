@@ -69,7 +69,8 @@
           </select>
         </form>
         <div class="buttons">
-          <button id="cart1">Add to Cart</button>
+        <button id="cart1"><a href ="./payment.jsp?productId=<%=id%>">Buy Now</a></button>
+         <button id="cart1">Add to Cart</button>
         </div>
         <hr />
         <br />

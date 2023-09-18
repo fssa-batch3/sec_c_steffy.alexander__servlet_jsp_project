@@ -76,7 +76,7 @@
 						class="fa-sharp fa-solid fa-star"></i> <i
 						class="fa-sharp fa-solid fa-star"></i>
 				</div>
-				<a id="add" href="plantcart.html">Add To Cart</a>
+				<a id="add" href="plantcart.html">View Details</a>
 			</div>
 		</a>
 		<%

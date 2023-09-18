@@ -288,7 +288,7 @@ select {
 }
 .buttons {
   width: 350px;
-  /* display: flex; */
+  display: flex; 
   /* justify-content: space-evenly; */
   margin-top: 32px ;
 }

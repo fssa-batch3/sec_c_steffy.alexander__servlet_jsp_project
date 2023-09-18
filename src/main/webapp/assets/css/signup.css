@@ -1,0 +1,88 @@
+@charset "ISO-8859-1";
+body {
+    background-image: url(../images/plant.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.main {
+    margin: 180px auto;
+    width: 450px;
+    height: 490px;
+    padding-top: 150px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.signup {
+    width: 380px;
+    height: 170px;
+    position: absolute;
+    top: 100px;
+    left: 552px;
+    text-align: center;
+    background-image: linear-gradient(to bottom right, #28583a, #34a26f);
+    border-radius: 10px;
+    box-shadow: 6px 60px 6px 6px solid white;
+
+
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+
+}
+
+label {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin: 0px 16px 0px 20px;
+
+}
+
+#iconlog {
+    margin: 20px;
+    font-size: 25px;
+    cursor: pointer;
+
+}
+
+label img {
+    width: 80px;
+}
+
+label input {
+    width: 350px;
+    border-width: 0px 0px 1.5px 0px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+#loglog {
+    margin-right: 10px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+button{
+    width:150px;
+    height: 30px;
+    /* border-radius: 40px; */
+    color:white;
+   background-image: linear-gradient(to bottom right, #28583a, #34a26f);
+    text-align: center;
+    margin-top: 8px;
+    padding: 8px;
+    border: none;
+    font-size: 12px;
+}
+button:hover{
+   /* background-color: white; */
+   background-image: linear-gradient(to bottom right, #28583a, #34a26f);
+    border-style: none;
+    cursor: pointer;
+}
