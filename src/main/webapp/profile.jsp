@@ -16,30 +16,14 @@
 	rel="stylesheet">
 </head>
 <body>
+
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
+	System.out.print(user);
 	String mobNum = user.getMobileNumber() != null ? user.getMobileNumber() : "";
 	String address = user.getAddress() != null ? user.getAddress() : "";
 	%>
-	<header>
-		<div class="logo">
-			<img id="logo_img"
-				src="./assets/images/Picsart_22-12-05_14-49-34-612.png" alt="LOGO">
-		</div>
-
-		<div class="nav">
-
-			<a id="home_title" href="./home.jsp">Home</a> <a href="/pages/plant.html">Plants</a>
-			<a href="/pages/seeds.html">Seeds</a> <a href="/pages/blog.html">Blog</a>
-
-			<a id="profile_logo" href="/pages/profile.html" id="profile_logo">
-				<img id="profile_logo" src="./assets/images/girl.png" alt="">
-			</a> <a id="cart_a" href=""> <img id="cart"
-				src="./assets/images/cart logo.png" alt="cart">
-			</a> <a id="log" href="./login.jsp"> <span id="login_title">Login</span>
-			</a>
-		</div>
-	</header>
+	<jsp:include page="./header.jsp"></jsp:include>
 
 	<div class="content">
 		<div class="left">

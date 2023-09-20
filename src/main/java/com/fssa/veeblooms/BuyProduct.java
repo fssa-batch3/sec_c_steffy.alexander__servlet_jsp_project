@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.fssa.veeblooms.dao.PlantDAO;
 import com.fssa.veeblooms.dao.UserDAO;
 import com.fssa.veeblooms.enumclass.OrderStatus;
+import com.fssa.veeblooms.exception.CustomException;
 import com.fssa.veeblooms.exception.DAOException;
 import com.fssa.veeblooms.model.Order;
 import com.fssa.veeblooms.model.OrderedProduct;
@@ -34,18 +35,16 @@ public class BuyProduct extends HttpServlet {
 	PlantService plantService = new PlantService(new PlantValidator(), new PlantDAO());
 	OrderService orderService = new OrderService();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		int plantId = Integer.parseInt(request.getParameter("plantId"));
+		String address= request.getParameter("address");
+		String phoneNumber= request.getParameter("phoneNumber");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("LoggedUser");
-
 		Order order = new Order();
 		OrderedProduct orderProduct = new OrderedProduct();
 		try {
@@ -61,12 +60,14 @@ public class BuyProduct extends HttpServlet {
 			order.setProductsList(productsList);
 			order.setOrderedDate(LocalDate.now());
 			order.setUserID(userId);
+			order.setAddress(address);
+			order.setPhoneNumber(phoneNumber);
 			order.setStatus(OrderStatus.ORDERED);
 			Logger.info(order);
+			orderService.addOrder(order);
 			Logger.info("Order Placed Sucessfully ");
-		} catch (DAOException | SQLException e) {
-			Logger.info("Order Failed");
-
+		} catch (DAOException | SQLException | CustomException e) {
+			Logger.info("Order Failed"+e.getMessage());
 			e.printStackTrace();
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("./home.jsp");
