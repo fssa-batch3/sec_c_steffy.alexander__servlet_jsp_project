@@ -42,8 +42,7 @@
 				<div class="fstname">
 					<i class="fa-solid fa-user"></i>Profile
 				</div>
-				<a id="create_product" href="/pages/create.html"><div
-						class="secname">
+				<a id="create_product" href="/pages/create.html"><div class="secname">
 						<i class="fa-solid fa-user"></i>create product
 					</div> </a> 
 					<a href="./home.jsp">
@@ -116,7 +115,7 @@
 	</div>
 
 
-
+<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 </body>
 <script src="./assets/js/profile.js"></script>
 </html>

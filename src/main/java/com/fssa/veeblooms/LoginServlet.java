@@ -3,6 +3,7 @@ package com.fssa.veeblooms;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,41 +29,46 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		UserService userservice = new UserService();
 
+		if ("steffy12@veeblooms.com".equals(email) && "Steffy@123".equals(password)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("LoggedUser", email);
 
-		
-		 if ("steffy12@veeblooms.com".equals(email) && "Steffy@123".equals(password)) {
-	            HttpSession session = request.getSession();
-	            session.setAttribute("LoggedUser", email);
-	            
-	            response.sendRedirect("./createplant.jsp");
-		 } 
-		 
-		 else{
-
- 
-		try {
-			User user = userservice.login(email, password);
-			System.out.println(user);
-			if (user != null) {
-
-				HttpSession session = request.getSession();
-				System.out.println("Logged in successful");
-				System.out.println(user);
-				session.setAttribute("LoggedUser", user);
-				response.sendRedirect("./profile.jsp");
-			} else { 
-				System.out.println("No user Records found");
-				response.sendRedirect("./login.jsp");
-			}
-		} catch (DAOException | SQLException e) {
-
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-			response.sendRedirect("./login.jsp");
+			response.sendRedirect("./createplant.jsp");
 		}
 
+		else {
+
+			try {
+				User user = userservice.login(email, password);
+				System.out.println(user);
+				if (user != null) {
+					HttpSession session = request.getSession();
+					System.out.println("Logged in successful");
+					request.setAttribute("successMsg", "Logged in successful");
+					request.setAttribute("path", "./profile.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
+					rd.forward(request, response);
+					System.out.println(user);
+					session.setAttribute("LoggedUser", user);
+					response.sendRedirect("./profile.jsp");
+				} else {
+
+					System.out.println("No user Records found");
+					request.setAttribute("errorMsg", "No user Records found");
+					request.setAttribute("path", "./login.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+					rd.forward(request, response);
+				}
+			} catch (DAOException | SQLException e) {
+
+				System.out.println(e.getMessage());
+				request.setAttribute("errorMsg", e.getMessage());
+				request.setAttribute("path", "./login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+				rd.forward(request, response);
+				e.printStackTrace();
+			}
+
+		}
 	}
 }
-}
-
-

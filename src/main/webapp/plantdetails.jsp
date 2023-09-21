@@ -57,7 +57,7 @@
 
         <span id="numinrs"> &#x20B9; <%=plant.getPrice()%> </span>
 
-        <form action="/action_page.php" class="quantity_form">
+       <!--   - <form action="/action_page.php" class="quantity_form">
           <label for="1" id="Quantity">Quantity</label>
           <select name="1" id="item">
             <option value="one">1</option>
@@ -68,6 +68,7 @@
             <option value="three">6</option>
           </select>
         </form>
+       -->
         <div class="buttons">
         <button id="cart1"><a href ="./payment.jsp?productId=<%=id%>">Buy Now</a></button>
          <button id="cart1">Add to Cart</button>

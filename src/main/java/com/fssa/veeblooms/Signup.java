@@ -38,7 +38,7 @@ public class Signup extends HttpServlet {
 		String confirmPassword = request.getParameter("confirmpass").trim();
 		if (!password.equals(confirmPassword)) {
 			Logger.info("Password and confirm password doesn't match");
-
+			request.setAttribute("errorMsg", "Password and confirm password doesn't match");
 			RequestDispatcher rd = request.getRequestDispatcher("./signup.jsp");
 			rd.forward(request, response);
 
@@ -52,12 +52,18 @@ public class Signup extends HttpServlet {
 			try {
 				userService.addUser(user);
 				Logger.info("success");
-				response.sendRedirect("./login.jsp");
+				request.setAttribute("successMsg", "Account created succcessfully");
+				request.setAttribute("path", "./login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+				rd.forward(request, response);
 
 			} catch (CustomException | DAOException e) {
-				Logger.info(e.getMessage());
+				request.setAttribute("errorMsg", e.getMessage());
+				Logger.info(e.getMessage()); 
 				e.printStackTrace();
-				response.sendRedirect("./signup.jsp");
+				request.setAttribute("path", "./signup.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("./signup.jsp");
+				rd.forward(request, response);
 
 			}
 		}

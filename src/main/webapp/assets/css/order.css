@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-* {
+*{
   margin: 0;
   padding: 0;
   font-family: "Kanit", sans-serif;
@@ -107,7 +107,6 @@ header a {
 }
 .all_orders {
   margin: 20px;
-  
   padding: 10px;
 }
 table{

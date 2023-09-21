@@ -19,6 +19,7 @@
 <title>Document</title>
 </head>
 <body>
+
 	<%
 	ArrayList<Order> orderDetails = (ArrayList<Order>) request.getAttribute("orderDetails");
 
@@ -32,9 +33,9 @@
 
 
 			<tr class="titles">
-				<td class="id" style="width: 15px">ID</td>
-				<td class="product"style="width: 120px">Product</td>
-				<td class="price" style="width: 20px">Price</td>
+				<td class="id" style="width: 5px">ID</td>
+				<td class="product"style="width: 100px">Product</td>
+				<td class="price" style="width: 50px">Price</td>
 				<td class="quantity" style="width: 15px">Quantity</td>
 				<td class="totalprice" style="width: 30px">Total Price</td>
 				<td class="delivery_address">Delivery address</td>
@@ -43,18 +44,25 @@
 					Date</td>
 				<td class="delivered_date" style="width: 100px">Delivered Date</td>
 				<td class="status" style="width: 20px">Status</td>
+				
+				
+				<td class="cancel" style="width: 20px" name="cancel">Cancel Order</td>
+				
+				
 			</tr>
 
 
 			<%
 			for (Order order : orderDetails) {
+				
 				for (OrderedProduct product : order.getProductsList()) {
+					
 					Plant plant = PlantDAO.getPlantById(product.getProductId());
 			%>
 
 			<tr class="details">
-				<td class="id" style="width: 15px"><%=order.getOrderId()%></td>
-				<td class="product"style="width: 120px"><%=plant.getPlantName()%></td>
+				<td class="id" name="orderId" style="width: 5px" ><%=order.getOrderId()%></td>
+				<td class="product"style="width: 90px"><%=plant.getPlantName()%></td>
 				<td class="price" style="width: 20px"><%=plant.getPrice()%></td>
 				<td class="quantity" style="width: 15px"><%=product.getQuantity()%></td>
 				<td class="totalprice" style="width: 30px"><%=product.getTotalAmount()%></td>
@@ -63,6 +71,9 @@
 				<td class="expected_date" style="width: 40px">--</td>
 				<td class="delivered_date" style="width: 40px">--</td>
 				<td class="status" style="width: 20px"><%=order.getStatus()%></td>
+				
+				<td class="cancel-cell" style="width: 45px"><button style="padding:20px;"><a href="CancelOrder?orderId=<%=order.getOrderId()%>">Cancel Order</a></button></td>
+				
 			</tr>
 
 

@@ -2,6 +2,7 @@ package com.fssa.veeblooms;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,7 @@ public class ProfileUpdate extends HttpServlet {
 			throws ServletException, IOException {
 
 
-		User user = new User();
+		User user = new User(); 
 		System.out.println(request.getParameter("email"));
 		user.setFirstName(request.getParameter("fname"));
 		user.setLastName(request.getParameter("lname"));
@@ -46,11 +47,21 @@ public class ProfileUpdate extends HttpServlet {
 		try {
 			userService.updateUser(user);
 			HttpSession session = request.getSession();
+			
+			request.setAttribute("successMsg", "Profile updated sucessfully");
+			request.setAttribute("path", "./profile.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
+			rd.forward(request, response);
 			session.setAttribute("LoggedUser", user);
 			System.out.println("Updated successfully!");
+			response.sendRedirect("./profile.jsp");
 
 		} catch (DAOException | CustomException e) {
 
+			request.setAttribute("errorMsg", e.getMessage());
+			request.setAttribute("path", "./profile.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
+			rd.forward(request, response);		
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
@@ -58,3 +69,5 @@ public class ProfileUpdate extends HttpServlet {
 	}
 
 }
+
+

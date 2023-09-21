@@ -17,10 +17,12 @@ if (session.getAttribute("LoggedUser") != null) {
 
 	<div class="nav">
 		<a id="home_title" href="./home.jsp">Home</a> <a href="./ShowAllPlant">Plants</a>
-		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a> <a
+		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a> 
+		
+		<!--  <a
 			id="cart_a" href=""> <img id="cart"
 			src="./assets/images/cart logo.png" alt="cart">
-		</a> 
+		</a> -->
 		
 		
 		
