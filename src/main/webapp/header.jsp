@@ -1,11 +1,13 @@
+
 <%
 String path = "./login.jsp";
 String title = "Login";
-String imgPath = "./assets/images/login_icon.png";
+boolean isLogged = false;
+String imgPath = "./assets/images/girl.png";
 if (session.getAttribute("LoggedUser") != null) {
 	path = "./profile.jsp";
+	isLogged = true;
 
-	imgPath = "./assets/images/girl.png";
 }
 %>
 
@@ -17,20 +19,25 @@ if (session.getAttribute("LoggedUser") != null) {
 
 	<div class="nav">
 		<a id="home_title" href="./home.jsp">Home</a> <a href="./ShowAllPlant">Plants</a>
-		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a> 
-		
-		<!--  <a
-			id="cart_a" href=""> <img id="cart"
-			src="./assets/images/cart logo.png" alt="cart">
-		</a> -->
-		
-		
-		
+		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a>
+
+		<%
+		if (isLogged == true) {
+		%>
+
 		<a id="profile_logo" href="<%=path%>"><img id="profile_logo"
-			src="<%=imgPath%>"  alt=""> 
-		
+			src="<%=imgPath%>" alt=""> </a>
+		<%
+		} else {
+		%>
+		<a href="./login.jsp" id='log'> <span id="login_title">Login</span>
 		</a>
-		<a  href="./OrderHistory">Order History
-		</a>
+
+		<%
+		}
+		%>
+
+
+		<a href="./OrderHistory">Order History </a>
 	</div>
 </header>

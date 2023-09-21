@@ -49,9 +49,8 @@ public class ProfileUpdate extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			request.setAttribute("successMsg", "Profile updated sucessfully");
-			request.setAttribute("path", "./profile.jsp");
-			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
-			rd.forward(request, response);
+			
+
 			session.setAttribute("LoggedUser", user);
 			System.out.println("Updated successfully!");
 			response.sendRedirect("./profile.jsp");
@@ -59,13 +58,14 @@ public class ProfileUpdate extends HttpServlet {
 		} catch (DAOException | CustomException e) {
 
 			request.setAttribute("errorMsg", e.getMessage());
-			request.setAttribute("path", "./profile.jsp");
-			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
-			rd.forward(request, response);		
+		
+					
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		response.sendRedirect("./profile.jsp");
+		request.setAttribute("path", "./profile.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
+		rd.forward(request, response);
 	}
 
 }

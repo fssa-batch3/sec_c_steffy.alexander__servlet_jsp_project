@@ -17,6 +17,7 @@ import com.fssa.veeblooms.service.UserService;
 
 /**
  * Servlet implementation class LoginServlet
+ * 
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -43,14 +44,14 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(user);
 				if (user != null) {
 					HttpSession session = request.getSession();
+					session.setAttribute("LoggedUser", user);
 					System.out.println("Logged in successful");
 					request.setAttribute("successMsg", "Logged in successful");
 					request.setAttribute("path", "./profile.jsp");
 					RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
 					rd.forward(request, response);
 					System.out.println(user);
-					session.setAttribute("LoggedUser", user);
-					response.sendRedirect("./profile.jsp");
+					
 				} else {
 
 					System.out.println("No user Records found");
@@ -69,6 +70,5 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}
-	}
+		}}
 }

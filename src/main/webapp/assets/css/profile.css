@@ -331,3 +331,24 @@ select {
 	margin: 0px 280px 400px 0px;
 	width: 300px;
 }
+
+#login_title {
+  /* margin-left: 14px; */
+  /* font-family: "Carter One", cursive; */
+  padding: 8px 15px;
+  background-color: #3d6921;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+#login_title:hover {
+  background-color: white;
+  color: #3d6921;
+  cursor: pointer;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    
+}

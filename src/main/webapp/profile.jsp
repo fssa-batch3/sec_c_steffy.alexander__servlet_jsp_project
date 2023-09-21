@@ -20,6 +20,7 @@
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
 	System.out.print(user);
+
 	String mobNum = user.getMobileNumber() != null ? user.getMobileNumber() : "";
 	String address = user.getAddress() != null ? user.getAddress() : "";
 	%>
