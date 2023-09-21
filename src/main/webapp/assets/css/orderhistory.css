@@ -1,5 +1,4 @@
 @charset "ISO-8859-1";
-
 * {
   margin: 0;
   padding: 0;
@@ -106,28 +105,72 @@ header a {
   margin: 70px 50px;
 }
 .all_orders {
-  margin: 20px;
-  
+  margin: 70px 120px;
+  border: #30650f solid;
+  border-width: 0px 0px 2px 0px;
+  display: inline;
   padding: 10px;
 }
-table{
-	margin-top:20px ;
-	width:96%;
-	margin:30px auto;
-	text-align:center;
+
+.titles {
+  display: flex;
+  justify-content: space-around;
+
+  width: 1490px;
+  margin: 40px auto;
+  /* border: 2px solid black; */
+  text-align: center;
 }
-table tr td{
-	margin:10px 15px;
-	padding:10px;
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  /* border: 2px solid black; */
+  width: 1490px;
+  margin: 20px auto;
+  border: solid grey;
+  border-width: 0px 0px 1px 0px;
+  text-align: center;
+  font-size:13px;
 }
-table tr:nth-of-type(1) td{
-	background-color: #c0c0c0;
-	
+.titles p,
+.details p {
+  width: 120px;
+
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-table tr td
-{
-	padding:20px 10px;
-	border:1px solid grey;
-	border-width:0px 0px 1px 0px;
+.titles p {
+  background-color: rgb(207, 207, 207);
+  font-weight: 500;
+  color: rgb(70, 70, 70);
+  font-size:15px;
+}
+.titles p:nth-of-type(1),.details p:nth-of-type(1) {
+  width: 15px;
+}
+.titles p:nth-of-type(2),.details p:nth-of-type(2) {
+  width: 165px;
+}
+.titles p:nth-of-type(3),.details p:nth-of-type(3) {
+  width: 120px;
+}
+.titles p:nth-of-type(4),.details p:nth-of-type(4) {
+  width: 120px;
+}
+.titles p:nth-of-type(5),.details p:nth-of-type(5) {
+  width: 170px;
+}
+
+
+.titles p{
+  border: 0.5px solid white;
+  height:28px;
+}
+.details p:nth-of-type(9) {
+ color:#ce0a2e;
+ letter-spacing:0.75px;
 }
 

@@ -4,7 +4,7 @@ String title = "Login";
 String imgPath = "./assets/images/login_icon.png";
 if (session.getAttribute("LoggedUser") != null) {
 	path = "./profile.jsp";
-	title = "Profile";
+
 	imgPath = "./assets/images/girl.png";
 }
 %>
@@ -20,9 +20,15 @@ if (session.getAttribute("LoggedUser") != null) {
 		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a> <a
 			id="cart_a" href=""> <img id="cart"
 			src="./assets/images/cart logo.png" alt="cart">
-		</a> <a id="profile_logo" href="<%=path%>"> <img id="profile_logo"
-			src="<%=imgPath%>" alt=""> <span id="login_title"> 
-		</span>
+		</a> 
+		
+		
+		
+		<a id="profile_logo" href="<%=path%>"><img id="profile_logo"
+			src="<%=imgPath%>"  alt=""> 
+		
+		</a>
+		<a  href="./OrderHistory">Order History
 		</a>
 	</div>
 </header>

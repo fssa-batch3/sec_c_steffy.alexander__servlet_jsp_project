@@ -1,43 +1,80 @@
+<%@page import="com.fssa.veeblooms.model.Plant"%>
+<%@page import="com.fssa.veeblooms.dao.PlantDAO"%>
+<%@page import="com.fssa.veeblooms.model.OrderedProduct"%>
+<%@page import="com.fssa.veeblooms.model.Order"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="./assets/css/order.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
+<link
+	href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet" />
+<title>Document</title>
+</head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-    <h1 class="heading">Order History</h1>
-    <h3 class="all_orders">All Orders</h3>
-    <div class="order">
-      <div class="titles">
-        <p class="id">ID</p>
-        <!-- <p class="name">Name</p> -->
-        <p class="product">Product</p>
-        <p class="quantity">Quantity</p>
-        <p class="price">Total Price</p>
-        <p class="delivery_address">Delivery address</p>
-        <p class="ordered_date">Ordered date</p>
-        <p class="expected_date">Expected Delivery Date</p>
-        <p class="delivered_date">Delivered Date</p>
-        <p class="status">Status</p>
-      </div>
+	<%
+	ArrayList<Order> orderDetails = (ArrayList<Order>) request.getAttribute("orderDetails");
+
+	System.out.print(orderDetails + "got");
+	%>
+	<jsp:include page="header.jsp"></jsp:include>
+	<h1 class="heading">Order History</h1>
+	<h3 class="all_orders">All Orders</h3>
+
+		<table style="margin-top:20px">
 
 
-    </div>
+			<tr class="titles">
+				<td class="id" style="width: 15px">ID</td>
+				<td class="product"style="width: 120px">Product</td>
+				<td class="price" style="width: 20px">Price</td>
+				<td class="quantity" style="width: 15px">Quantity</td>
+				<td class="totalprice" style="width: 30px">Total Price</td>
+				<td class="delivery_address">Delivery address</td>
+				<td class="ordered_date" style="width: 100px">Ordered date</td>
+				<td class="expected_date" style="width: 100px">Expected Delivery
+					Date</td>
+				<td class="delivered_date" style="width: 100px">Delivered Date</td>
+				<td class="status" style="width: 20px">Status</td>
+			</tr>
+
+
+			<%
+			for (Order order : orderDetails) {
+				for (OrderedProduct product : order.getProductsList()) {
+					Plant plant = PlantDAO.getPlantById(product.getProductId());
+			%>
+
+			<tr class="details">
+				<td class="id" style="width: 15px"><%=order.getOrderId()%></td>
+				<td class="product"style="width: 120px"><%=plant.getPlantName()%></td>
+				<td class="price" style="width: 20px"><%=plant.getPrice()%></td>
+				<td class="quantity" style="width: 15px"><%=product.getQuantity()%></td>
+				<td class="totalprice" style="width: 30px"><%=product.getTotalAmount()%></td>
+				<td class="delivery_address" style="width: 50px"><%=order.getAddress()%></td>
+				<td class="ordered_date" style="width: 40px"><%=order.getOrderedDate()%></td>
+				<td class="expected_date" style="width: 40px">--</td>
+				<td class="delivered_date" style="width: 40px">--</td>
+				<td class="status" style="width: 20px"><%=order.getStatus()%></td>
+			</tr>
+
+
+			<%
+			}
+			}
+			%>
+		</table>
+
+
 </body>
 </html>
 
 
 
-  

@@ -37,7 +37,7 @@ public class ProfileUpdate extends HttpServlet {
 		System.out.println(request.getParameter("email"));
 		user.setFirstName(request.getParameter("fname"));
 		user.setLastName(request.getParameter("lname"));
-		user.setEmail(request.getParameter("email"));
+		user.setEmail(request.getParameter("email")); 
 		user.setMobileNumber(request.getParameter("number"));
 		user.setAddress(request.getParameter("address"));
 		user.setGender(GenderEnum.fromValue(request.getParameter("gender")));

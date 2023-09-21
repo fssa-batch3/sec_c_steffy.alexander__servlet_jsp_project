@@ -13,8 +13,6 @@
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
 
-	<session-config>
-		<session-timeout>1</session-timeout> <!-- Number of minutes -->
-	</session-config>
+	
 
 </web-app>

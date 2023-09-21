@@ -54,13 +54,13 @@
 			data-pattern-validatetype="number" name="phoneNumber" required /> <br />
 		<br /></label><br />
 		
-		
-		 <label for="Address"> Delivery Address <input
-			id="address" type="text" value="<%=address%>" name="address" required />
-		</label><br /> <br />
-		<br />
+<label for="address">Delivery Address</label>
+<textarea id="address" name="address" required><%= address %></textarea>
+<br />
+<br />
 
-		<button type="submit">Buy now</button>
+
+		<button id="buy_now" type="submit">Buy now</button>
 
 
 
@@ -174,7 +174,7 @@
 					₹<span class="rs"><%=plant.getPrice() %></span>
 				</p>
 			</div>
-			<a id="order_history" href="/pages/order.html">Want to see Order
+			<a id="order_history" href="./orderhistory.jsp">Want to see Order
 				history?</a>
 
 
