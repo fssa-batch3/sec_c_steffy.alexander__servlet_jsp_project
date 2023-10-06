@@ -54,18 +54,27 @@ public class SearchItem extends HttpServlet {
 	        }
 	    } catch (DAOException | SQLException e) {
 	        // Handle exceptions (e.g., database errors) by printing an error message and stack trace.
-	        System.out.print(e.getMessage());
+	        System.out.print(e.getMessage());                           
 	        e.printStackTrace();
 	    }
 	    
-	    // Set the resultPlants list as an attribute in the request to pass it to the next JSP page.
-	    request.setAttribute("searchedPlants", resultPlants);
-	    
-	    // Obtain a RequestDispatcher to forward the request and response to the "showallplants.jsp" page.
+	    if(resultPlants==null|| resultPlants.isEmpty()) {
+	    	
+	    	request.setAttribute("errorMsg", "No results found");
+	    	request.setAttribute("path", "./ShowAllPlant");
+	    }
+	    else {
+		    // Set the resultPlants list as an attribute in the request to pass it to the next JSP page.
+		    request.setAttribute("searchedPlants", resultPlants);
+		    
+		    // Obtain a RequestDispatcher to forward the request and response to the "showallplants.jsp" page.
+		  
+	    }
 	    RequestDispatcher rd = request.getRequestDispatcher("./showallplants.jsp");
 	    
 	    // Forward the request and response to the "showallplants.jsp" page for rendering.
 	    rd.forward(request, response);
+
 	}
 
 

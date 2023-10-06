@@ -25,7 +25,6 @@ public class ProfileUpdate extends HttpServlet {
 
 	UserService userService = new UserService();
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -33,33 +32,30 @@ public class ProfileUpdate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
-		User user = new User(); 
+		User user = new User();
+		
 		System.out.println(request.getParameter("email"));
 		user.setFirstName(request.getParameter("fname"));
 		user.setLastName(request.getParameter("lname"));
-		user.setEmail(request.getParameter("email")); 
+		user.setEmail(request.getParameter("email"));
 		user.setMobileNumber(request.getParameter("number"));
 		user.setAddress(request.getParameter("address"));
 		user.setGender(GenderEnum.fromValue(request.getParameter("gender")));
 
-		System.out.println(user); 
+		System.out.println(user);
 		try {
 			userService.updateUser(user);
 			HttpSession session = request.getSession();
-			
+
 			request.setAttribute("successMsg", "Profile updated sucessfully");
-			
 
 			session.setAttribute("LoggedUser", user);
 			System.out.println("Updated successfully!");
-			response.sendRedirect("./profile.jsp");
 
 		} catch (DAOException | CustomException e) {
 
 			request.setAttribute("errorMsg", e.getMessage());
-		
-					
+
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
@@ -69,5 +65,3 @@ public class ProfileUpdate extends HttpServlet {
 	}
 
 }
-
-

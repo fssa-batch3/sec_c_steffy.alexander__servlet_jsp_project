@@ -39,11 +39,11 @@
 		</p>
 		<p>Plants for decorating your home to make it look natural and
 			beautiful.</p>
-		<a href="pages/cart.html">
+		<!--  
 			<button id="buynow">BUY NOW</button>
-		</a> <a href="pages/seller.html">
+	
 			<button id="buynow">SELL NOW</button>
-		</a>
+		-->
 	</div>
 	<!-- content1 ends -->
 
@@ -59,8 +59,10 @@
 			<div class="imagecontent_1">
 				<img id="img_1" src="./assets/images/design.avif" alt="plant">
 				<div class="designbox1">
+				<br>
+				<br>
 					<p id="textinside">Plants for home designing</p>
-					<button>Explore more</button>
+				<!--  	<button>Explore more</button>-->
 				</div>
 			</div>
 
@@ -68,8 +70,10 @@
 
 				<img id="img_2" src="./assets/images/design3.jpg" alt="plant">
 				<div class="designbox2">
+				<br>
+				<br>
 					<p id="textinside">Plants for healthy</p>
-					<button>Explore more</button>
+					<!--  <button>Explore more</button>-->
 				</div>
 
 			</div>
@@ -78,8 +82,10 @@
 
 				<img id="img_3" src="./assets/images/pot design 2.jpg" alt="plant">
 				<div class="designbox3">
+				<br>
+				<br>
 					<p id="textinside">Plants for interiors</p>
-					<button>Explore more</button>
+					<!-- <button>Explore more</button>-->
 				</div>
 			</div>
 		</div>
@@ -93,19 +99,19 @@
 			<h3 class="para_plants">Grow Your Own Favourite Plants Life</h3>
 			<p id="ad_quote">By buying rare type of plants and seeds here at
 				affordable cost!</p>
-			<a href="./pages/plant.html">
+			<a href="./ShowAllPlant">
 				<button id="home_shopnow">Shop Now</button>
 			</a>
 
 		</div>
 	</div>
-	<div class="Customer">
+	<!--<div class="Customer">
 		<h3 id="Customer_say">
 			What Our <span id="cus_design">Customer</span> Say's?
 		</h3>
 	</div>
 
-	<div class="container_3">
+	 <div class="container_3">
 
 		<div class="review_home">
 
@@ -129,7 +135,7 @@
 			<img id="quotation" src="./assets/images/right-quotation.png">
 		</div>
 
-	</div>
+	</div>-->
 </body>
 </html>
 

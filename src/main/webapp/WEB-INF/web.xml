@@ -13,6 +13,20 @@
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
 
-	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404Error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500Error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>504</error-code>
+		<location>/500Error.jsp</location>
+	</error-page>
+<session-config>   
+    <session-timeout>30</session-timeout> <!-- Timeout in minutes -->
+</session-config>
 
 </web-app>

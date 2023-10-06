@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #F2F4F1;
+   /* background-color: #F2F4F1;*/
 }
 
 header {
@@ -15,7 +15,7 @@ header {
     justify-content: space-between;
     height: 80px;
     background-color: #F2F4F1;
-    box-shadow: 0px 5px 20px black;
+    box-shadow: 0px 0.5px 10px black;
     position: sticky;
     top: 0;
     z-index: 10;

@@ -45,17 +45,19 @@ public class UpdatePlant extends HttpServlet {
 
             // Retrieve the plant object by its ID
             Plant plant = plantService.getPlantById(id);
+            List<Plant> allPlants = plantService.getAllPlants();
 
             // Set the "plant" attribute in the request for use in JSP
+         
             request.setAttribute("plant", plant);
             System.out.println(plant + "gyvhj");
 
             // Forward the request and response to "updateplant.jsp"
-            RequestDispatcher rd = request.getRequestDispatcher("./updateplant.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("./UpdatePlantDetails");
             rd.forward(request, response);
 
             // Redirect to the "ShowAllPlant" servlet
-            response.sendRedirect(request.getContextPath() + "/ShowAllPlant");
+//            response.sendRedirect(request.getContextPath() + "/ShowAllPlant");
         } catch (DAOException | SQLException e) {
             e.printStackTrace();
         }
@@ -97,14 +99,16 @@ public class UpdatePlant extends HttpServlet {
             plantService.updatePlant(plant);
 
             // Redirect to the "ShowAllPlant" servlet upon success
-            response.sendRedirect("./ShowAllPlant");
+            request.setAttribute("successMsg", "Plant details updated successfully!");
             Logger.info("success");
         } catch (CustomException | DAOException | SQLException e) {
 
-            // Redirect to "createplant.jsp" upon failure
-            response.sendRedirect("./createplant.jsp");
+        	request.setAttribute("errorMsg", e.getMessage());
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        request.setAttribute("path", "./UpdatePlantDetails");
+        RequestDispatcher rd = request.getRequestDispatcher("./UpdatePlantDetails");
+        rd.forward(request, response);
     }
 }

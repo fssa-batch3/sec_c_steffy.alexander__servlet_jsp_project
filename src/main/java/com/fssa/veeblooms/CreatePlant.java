@@ -5,11 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fssa.veeblooms.dao.PlantDAO;
 import com.fssa.veeblooms.enumclass.HybridEnum;
@@ -22,9 +24,32 @@ import com.fssa.veeblooms.util.Logger;
 import com.fssa.veeblooms.validator.PlantValidator;
 
 @WebServlet("/CreatePlant")
+
 public class CreatePlant extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession(false);
+
+		PlantService plantservice = new PlantService(new PlantValidator(), new PlantDAO());
+		List<Plant> plants = null;
+		try {
+			plants = plantservice.getAllPlants();
+			request.setAttribute("allplants", plants);
+			RequestDispatcher rd = request.getRequestDispatcher("./createplant.jsp");
+			Logger.info(plants);
+			rd.forward(request, response);
+
+		} catch (DAOException | SQLException e) {
+			System.out.println(e.getMessage());
+
+			e.printStackTrace();
+			response.sendRedirect("./home.jsp");
+		}
+    	
+    } 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Initialize a list to store image URLs
@@ -67,16 +92,24 @@ public class CreatePlant extends HttpServlet {
         try {
             // Attempt to add the Plant to the database
             plantService.addPlant(plant);
-
+            request.setAttribute("successMsg", "Product created Sucessfully");
+			request.setAttribute("path", "./ShowAllPlant");
+			
+		
             // Redirect to a JSP page on success
-            response.sendRedirect("./ShowAllPlant");
-            System.out.println("success");
+         
+			 Logger.info("success");
+   
 
         } catch (CustomException | DAOException | SQLException e) {
-            // Handle exceptions by logging and printing the stack trace
-        	response.sendRedirect("./createplant.jsp");
+        	request.setAttribute("errorMsg", e.getMessage());
+			request.setAttribute("path", "./createplant.jsp");
+			
+//        	response.sendRedirect("./createplant.jsp");
             Logger.info(e.getMessage());
             e.printStackTrace();
         }
+        RequestDispatcher rd = request.getRequestDispatcher("./createplant.jsp");
+		rd.forward(request, response);
     }
 }

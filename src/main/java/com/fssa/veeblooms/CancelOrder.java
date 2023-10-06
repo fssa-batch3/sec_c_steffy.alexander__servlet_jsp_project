@@ -37,6 +37,7 @@ public class CancelOrder extends HttpServlet {
 	                OrderService orderService = new OrderService();
 	                orderService.cancelOrder(orderId);
 	                System.out.println("Deleted order Successfully");
+	              
 	                response.sendRedirect("./ShowAllPlant"); 
 	            } catch ( DAOException | SQLException | CustomException e) {
 	                System.out.println("Delete order failed");

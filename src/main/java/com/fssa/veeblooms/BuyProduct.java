@@ -65,12 +65,18 @@ public class BuyProduct extends HttpServlet {
 			order.setStatus(OrderStatus.ORDERED);
 			Logger.info(order);
 			orderService.addOrder(order);
+			request.setAttribute("successMsg", "Order placed successful");
+			request.setAttribute("path", "./OrderHistory");
+			
 			Logger.info("Order Placed Sucessfully ");
 		} catch (DAOException | SQLException | CustomException e) {
 			Logger.info("Order Failed"+e.getMessage());
 			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());
+			request.setAttribute("path","./payment.jsp?productId="+plantId);		
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("./home.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("./payment.jsp?productId="+plantId);
 		rd.forward(request, response);
 
 	}

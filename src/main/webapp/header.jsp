@@ -5,9 +5,8 @@ String title = "Login";
 boolean isLogged = false;
 String imgPath = "./assets/images/girl.png";
 if (session.getAttribute("LoggedUser") != null) {
-	path = "./profile.jsp";
+	path = "./Profile";
 	isLogged = true;
-
 }
 %>
 
@@ -19,7 +18,7 @@ if (session.getAttribute("LoggedUser") != null) {
 
 	<div class="nav">
 		<a id="home_title" href="./home.jsp">Home</a> <a href="./ShowAllPlant">Plants</a>
-		<a href="./seeds.jsp">Seeds</a> <a href="./blog.jsp">Blog</a>
+
 
 		<%
 		if (isLogged == true) {
@@ -36,8 +35,19 @@ if (session.getAttribute("LoggedUser") != null) {
 		<%
 		}
 		%>
-
-
+		<%
+		if (isLogged == true) {
+		%>
 		<a href="./OrderHistory">Order History </a>
+		<%
+		} else {
+		%>
+
+
+		<%
+		}
+		%>
+
+
 	</div>
 </header>

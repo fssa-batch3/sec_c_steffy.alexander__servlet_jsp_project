@@ -29,8 +29,9 @@
 
 	<form action="./SearchItem">
 		<div class="search_box">
-			<input type="search" id="search" placeholder="Search" name="search">
-		
+			<input type="search" id="search" placeholder="search product" name="search" title="enter a valid plantname/special characters,numbers are not allowed"
+				pattern="[A-Za-z]+">
+
 
 		</div>
 	</form>
@@ -39,17 +40,12 @@
 	<div class="right">
 		<%
 		//getting the plant arraylist from request object that has been set by the getservlet method
-
-		List<Plant> allPlants = (List<Plant>) request.getAttribute("allplants");
-
-		List<Plant> searchedPlants = (List<Plant>) request.getAttribute("searchedPlants");
-
-		List<Plant> plants;
-		if (searchedPlants == null || searchedPlants.size() == 0) {
-
-			plants = allPlants;
-		} else {
-			plants = searchedPlants;
+		List<Plant> plants = new ArrayList<Plant>();
+		if (request.getAttribute("searchedPlants") != null) {
+			plants = (List<Plant>) request.getAttribute("searchedPlants");
+		}
+		if (request.getAttribute("allplants") != null) {
+			plants = (List<Plant>) request.getAttribute("allplants");
 		}
 
 		Logger.info(plants + "plant");
@@ -66,17 +62,14 @@
 			<div class="box1">
 				<div class="imgtrend" alt="trend">
 					<img src="<%=plant.getPlantImagesUrl().get(0)%>" alt="rose">
-					<i id="rs" class="fa-solid fa-indian-rupee-sign"><%=plant.getPrice()%></i>
 
+					<i id="rs" class="fa-solid fa-indian-rupee-sign"><%=plant.getPrice()%></i>
+					<br>
 					<h3 class="pinkrose"><%=plant.getPlantName()%></h3>
-					<a href="./cart.html"><i id="fa"
-						class="fa-sharp fa-solid fa-star"></i></a> <i
-						class="fa-sharp fa-solid fa-star"></i> <i
-						class="fa-sharp fa-solid fa-star"></i> <i
-						class="fa-sharp fa-solid fa-star"></i> <i
-						class="fa-sharp fa-solid fa-star"></i>
+					
 				</div>
-				<a id="add" href="plantcart.html">View Details</a>
+				<br> <br> <a id="add" href="#">View
+					Details</a>
 			</div>
 		</a>
 		<%
@@ -84,6 +77,6 @@
 		%>
 	</div>
 	<div class="right2"></div>
-
+<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 </body>
 </html>

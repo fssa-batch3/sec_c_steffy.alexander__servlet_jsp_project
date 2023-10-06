@@ -36,10 +36,15 @@ public class OrderHistory extends HttpServlet {
 			userId = UserDAO.getUserIdByEmail(user.getEmail());
 			ArrayList<Order> orderDetails=orderService.getOrderById(userId);
 			request.setAttribute("orderDetails", orderDetails);
+		
+			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./orderhistory.jsp");
+		
 			requestDispatcher.forward(request, response);
+			
 		} catch (DAOException | CustomException | SQLException e) {
 			System.out.println("Getting order details failed");
+			
 			e.printStackTrace();
 		}
 		

@@ -1,3 +1,4 @@
+<%@page import="com.fssa.veeblooms.enumclass.GenderEnum"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.fssa.veeblooms.model.*"%>
@@ -19,10 +20,31 @@
 
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
+
 	System.out.print(user);
 
 	String mobNum = user.getMobileNumber() != null ? user.getMobileNumber() : "";
 	String address = user.getAddress() != null ? user.getAddress() : "";
+	String maleEnum = "";
+	String femaleEnum = "";
+	String otherEnum = "";
+	String preferNotToSayEnum = "selected";
+
+	if (user.getGender() == GenderEnum.MALE) {
+		maleEnum = "selected";
+		preferNotToSayEnum = "";
+
+	} else if (user.getGender() == GenderEnum.FEMALE) {
+		femaleEnum = "selected";
+		preferNotToSayEnum = "";
+
+	} else if (user.getGender() == GenderEnum.OTHER) {
+		otherEnum = "selected";
+		preferNotToSayEnum = "";
+
+	} else {
+		preferNotToSayEnum = "selected";
+	}
 	%>
 	<jsp:include page="./header.jsp"></jsp:include>
 
@@ -30,9 +52,10 @@
 		<div class="left">
 			<div class="leftbox">
 
-				<img class="profile" src="./assets/images/bc.jpeg" alt="profile img">
-				<input type="file" id="file"> <label for="file"> <img
-					id="editcam" src="./assets/images/photo-camera.png" alt="editimg">
+				<img class="profile" src="./assets/images/girl.png"
+					alt="profile img"> <input type="file" id="file"> <label
+					for="file"> <img id="editcam"
+					src="./assets/images/photo-camera.png" alt="editimg">
 				</label> <br> <br>
 				<p class="username" id="displayProfile"></p>
 				<!-- <label for="name"> name <input type="text" id="name"></label><br><br>
@@ -40,16 +63,28 @@
 			</div>
 			<div class="bottomleft">
 
-				<div class="fstname">
+				<!--	<div class="fstname">
 					<i class="fa-solid fa-user"></i>Profile
 				</div>
-				<a id="create_product" href="/pages/create.html"><div class="secname">
+				<a id="create_product" href="/pages/create.html">
+					<div class="secname">
 						<i class="fa-solid fa-user"></i>create product
-					</div> </a> 
-					<a href="./home.jsp">
+					</div>
+				</a> <a href="./home.jsp">
 					<div class="thirdname">
 						<i class="fa-solid fa-user"></i>Back to Home
-					</div>
+					</div> -->
+				<%
+				if (session.getAttribute("isAdmin") != null) {
+				%>
+				<div class="thirdname">
+					<i class="fa-solid fa-user"></i><a href="./createplant.jsp">Admin
+						Access</a>
+				</div>
+				<%
+				}
+				%>
+
 				</a>
 			</div>
 		</div>
@@ -83,9 +118,13 @@
 							value="<%=address%>" disabled>
 						</label> <br> <label for="gender">Gender <select
 							name="gender" id="gender" required disabled>
-								<option value="Male">Male</option>
-								<option value="Female">Female</option>
-								<option value="Others">Other</option>
+
+								<option <%=maleEnum%> value="Male">Male</option>
+								<option <%=femaleEnum%> value="Female">Female</option>
+								<option <%=otherEnum%> value="Other">Other</option>
+								<option <%=preferNotToSayEnum%> value="Prefer not to say">Prefer
+									not to say</option>
+
 						</select>
 						</label>
 
@@ -100,11 +139,11 @@
 						<button type="submit">
 							<img src="./assets/images/update_icon.png">Update
 						</button>
-						
-						
-						
-						<span id="delete"><img src="./assets/images/delete.png">Delete</span>
-						<a href="./LogoutServlet"><span id="logout"> <img id="logout_icon" src="./assets/images/logout_icon.png"> Log Out
+
+
+						<a href="./LogoutServlet"> <span id="logout"> <img
+								id="logout_icon" src="./assets/images/logout_icon.png">
+								Log Out
 						</span></a>
 
 					</div>
@@ -116,10 +155,12 @@
 	</div>
 
 
-<jsp:include page="./successErrorMsg.jsp"></jsp:include>
+	<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 </body>
 <script src="./assets/js/profile.js"></script>
 </html>
+
+
 
 
 

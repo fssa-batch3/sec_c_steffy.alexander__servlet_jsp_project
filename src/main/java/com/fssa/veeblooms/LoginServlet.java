@@ -31,13 +31,25 @@ public class LoginServlet extends HttpServlet {
 		UserService userservice = new UserService();
 
 		if ("steffy12@veeblooms.com".equals(email) && "Steffy@123".equals(password)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("LoggedUser", email);
+			try {
+				User user = userservice.login(email, password);
+				HttpSession session = request.getSession();
+				session.setAttribute("LoggedUser", user);
+				System.out.println("admin :"+user);
+				session.setAttribute("isLogged", "true");
+				session.setAttribute("isAdmin", "true");
+				response.sendRedirect("./admin.jsp");
+			} catch (DAOException | SQLException e) {
 
-			response.sendRedirect("./createplant.jsp");
-		}
+				e.printStackTrace();
+				System.out.println("No user Records found");
+				request.setAttribute("errorMsg", "No user Records found");
+				request.setAttribute("path", "./login.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+				rd.forward(request, response);
+			}
 
-		else {
+		}else {
 
 			try {
 				User user = userservice.login(email, password);
@@ -45,17 +57,18 @@ public class LoginServlet extends HttpServlet {
 				if (user != null) {
 					HttpSession session = request.getSession();
 					session.setAttribute("LoggedUser", user);
+					session.setAttribute("isLogged", "true");
 					System.out.println("Logged in successful");
 					request.setAttribute("successMsg", "Logged in successful");
 					request.setAttribute("path", "./profile.jsp");
 					RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
 					rd.forward(request, response);
 					System.out.println(user);
-					
+
 				} else {
 
 					System.out.println("No user Records found");
-					request.setAttribute("errorMsg", "No user Records found");
+					request.setAttribute("errorMsg", "Incorrect email or password");
 					request.setAttribute("path", "./login.jsp");
 					RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
 					rd.forward(request, response);
@@ -70,5 +83,6 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}}
+		}
+	}
 }

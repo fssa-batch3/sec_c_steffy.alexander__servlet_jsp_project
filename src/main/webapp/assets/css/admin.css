@@ -1,0 +1,321 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background-color: #f2f4f1;
+  box-shadow: 0px 5px 20px black;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header a {
+  text-decoration: none;
+  color: #171a0f;
+  display: flex;
+  align-items: center;
+  font-family: "Carter One", cursive;
+}
+
+.home {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.nav a:nth-child(4) img {
+  margin-right: 13px;
+}
+
+#log {
+  width: 25px;
+  height: 25px;
+}
+
+.logo img {
+  width: 110px;
+  height: 65px;
+  margin-left: 25px;
+}
+
+.nav a {
+  margin: 10px;
+  text-decoration: none;
+  margin-right: 50px;
+  font-size: 18px;
+  color: #30650f;
+}
+.nav a:hover {
+  border: solid #4c812a;
+  border-width: 0px 0px 3px 0px;
+  transition: 0.05s ease;
+  color: #0d5114;
+}
+#cart {
+  width: 80px;
+  height: 60px;
+}
+#cart:hover {
+  border: none;
+  outline: none;
+}
+
+.background_image {
+  background-image: url(../images/bc_planting-removebg-preview.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 620px;
+  height: 450px;
+  margin-top: 100px;
+  margin-left: 270px;
+}
+.home {
+  display: flex;
+}
+.left_content {
+  width: 500px;
+  height: 500px;
+  margin-top: 200px;
+}
+#heading {
+  color: #30650f;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-left: 170px;
+  margin-top: 20px;
+}
+#quote {
+  margin-top: 50px;
+  margin-left: 170px;
+}
+#home_btn {
+  margin-top: 40px;
+  margin-left: 170px;
+  background-color: #30650f;
+  padding: 8px;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  border: 1px solid rgb(37, 111, 72);
+}
+
+#home_btn:hover {
+  background-color: white;
+  color: #3d6921;
+  border-style: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.box1 img {
+  height: 230px;
+  /* width: 100%; */
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+.box1 {
+  height: 380px;
+  width: 17%;
+  margin-top: 30px;
+  border: 2px solid white;
+  margin: 0px 30px 30px 30px;
+  transition: 1s;
+  color: brown;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
+
+.box1:hover {
+  transform: scale(0.95);
+  transition: 0.8s;
+  box-shadow: 5px 5px 20px grey;
+}
+#add {
+  background-color: rgb(232, 229, 229);
+  padding: 5px 10px;
+  border-radius: 16px;
+  height: 400px;
+  margin-top: 400px;
+  color: rgb(109, 53, 7);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#add a {
+  background-color: white;
+  padding: 4px;
+  border-radius: 20px;
+  margin-top: 400px;
+}
+
+#add:hover {
+  background-color: #674979;
+  color: yellow;
+}
+.fa-sharp {
+  color: gold;
+  height: 40px;
+  font-size: 17px;
+  padding: 4px;
+  position: relative;
+  /* left: 330px; */
+  top: 10px;
+}
+.boxes {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.add_product {
+  width: 100%;
+  height: 500px;
+
+  margin-top: 870px;
+  display: flex;
+  background-color: #f5f5f5;
+}
+.edit_btn {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 90px;
+  margin-left: 0px;
+}
+button {
+  background-color: #30650f;
+  padding: 9px;
+  color: white;
+  border-radius: 3.5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  border: 1px solid rgb(37, 101, 67);
+}
+button:hover {
+  background-color: white;
+  color: #3d6921;
+  border-style: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#update_img {
+  width: 400px;
+  margin-left: 300px;
+  margin-top: 20px;
+}
+.left {
+  margin-top: 170px;
+  margin-left: 220px;
+}
+#add_manage {
+  color: #000000;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-left: 28px;
+}
+.main {
+  background-image: url(../images/Untitled.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1300px;
+  height: 530px;
+  position: absolute;
+}
+.main img {
+  width: 400px;
+  margin-left: 1060px;
+  margin-top: 40px;
+}
+.main p {
+  position: relative;
+  top: 110px;
+  font-size: 26px;
+  color: #5b6b3a;
+  left: 80px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.main h3 {
+  position: relative;
+  top: 80px;
+  font-size: 40px;
+  left: 83px;
+  font-weight: 530;
+}
+.main button {
+  position: relative;
+  top: 300px;
+  padding: 14px;
+  left: 80px;
+}
+.box{
+  width: 200px;
+  height: 220px;
+  background-color: #ededed;
+  border-radius: 10px;
+  position: relative;
+  bottom: 260px;
+  left: 50px;
+
+}
+.boxes p {
+  position: relative;
+  top: 36px;
+  font-size: 19px;
+  color: #5b6b3a;
+  left: 26px;
+  font-family:'Poppins', sans-serif;
+  font-weight: 550;
+}
+.box img{
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  right: 100px;
+  
+}
+.boxes{
+  width: 970px;
+margin-left: 30px;
+margin-bottom: 70px;
+  display: flex;
+justify-content: space-between;
+}
+#box3{
+  width: 137px;
+  height:138px;
+  margin-top: 99px;
+}
+#box4{
+  width: 150px;
+  height:158px;
+  margin-top: 75px;
+}
+#profile_logo{
+	width:48px;
+	height:48px;
+}

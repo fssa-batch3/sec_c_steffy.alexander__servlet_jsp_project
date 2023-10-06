@@ -83,7 +83,7 @@
 			%>
 		</table>
 
-
+	<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 </body>
 </html>
 

@@ -14,7 +14,7 @@
 <body>
 	<div class="main">
 		<div class="signup">
-			<h2>Signup</h2>
+			<h2>Sign up</h2>
 
 			<div class="icons">
 				<i id="iconlog" class="fa-brands fa-facebook"></i> <i id="iconlog"
@@ -24,20 +24,21 @@
 		</div>
 		<form action="./Signup" method="post">
 			<label> <i id="loglog" class="fa-solid fa-child-dress"></i> <input
-				type="text" name="fname" placeholder="First Name..." pattern="[A-Za-z]{1,24}"
+				type="text" name="fname" placeholder="First Name..." pattern="[a-zA-Z]+" title="Name should only contain alphabets/ max len of 45"
 				id="fname" required /></label> <br />
 				 <label> <i id="loglog"
 				class="fa-solid fa-child-dress"></i> <input type="text"
-				placeholder="Last Name..." name="lname" pattern="[A-Za-z]{1,24}" id="lname" />
+				placeholder="Last Name..." name="lname" pattern="[a-zA-Z]+" id="lname" title="Name should only contain alphabets/ max len of 45"/>
 			</label> <br /> 
 			<label> <i id="loglog" class="fa-solid fa-envelope"></i>
-				<input type="email" placeholder="Email..." name="email" id="email" title=""
-				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required />
+				<input type="email" placeholder="Email..." name="email" id="email" title="email must only consists of gmail.com"
+				pattern="/^(?=.{1,44}$)[A-Za-z0-9._%+-]+@[A-Za-z.-]+\.[A-Za-z]{2,}$/"  maxlength=44 title="Email must have Length Limitation (Up to 44 Characters)" required />
 			</label> <br />
 			 <label> <i id="loglog" class="fa-solid fa-lock"></i>
 				<input type="password" placeholder="Password..." name="password" id="password"
 				title="Enter a uppercase, a lowercase, a number/special character"
 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+				
 				required /></label> <br /> 
 				<label> <i id="loglog"
 				class="fa-solid fa-lock"></i> <input type="password"

@@ -27,13 +27,17 @@ public class DeletePlant extends HttpServlet {
 		try {
 			plantService.deletePlant(plantService.getPlantIdByName(name));
 			System.out.println("Deleted plant Successfully");
+			request.setAttribute("successMsg", "Plant deleted successfully!");
 			
-			response.sendRedirect("./ShowAllPlant");
 			
 		} catch (DAOException | SQLException e) {
 			System.out.println("Delete plant failed");
-			response.sendRedirect("./deleteplant.jsp");
+			
 			e.printStackTrace();
 		}
+		
+		  request.setAttribute("path", "./DeletePlantDetails");
+	        RequestDispatcher rd = request.getRequestDispatcher("./UpdatePlantDetails");
+	        rd.forward(request, response);
 	}
 }
