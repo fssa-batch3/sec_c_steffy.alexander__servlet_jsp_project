@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,6 @@
 
 
 	<jsp:include page="./header.jsp"></jsp:include>
-
 
 
 	<!-- content1 starts -->
@@ -59,10 +58,9 @@
 			<div class="imagecontent_1">
 				<img id="img_1" src="./assets/images/design.avif" alt="plant">
 				<div class="designbox1">
-				<br>
-				<br>
+					<br> <br>
 					<p id="textinside">Plants for home designing</p>
-				<!--  	<button>Explore more</button>-->
+					<!--  	<button>Explore more</button>-->
 				</div>
 			</div>
 
@@ -70,10 +68,9 @@
 
 				<img id="img_2" src="./assets/images/design3.jpg" alt="plant">
 				<div class="designbox2">
-				<br>
-				<br>
+					<br> <br>
 					<p id="textinside">Plants for healthy</p>
-					<!--  <button>Explore more</button>-->
+
 				</div>
 
 			</div>
@@ -82,10 +79,9 @@
 
 				<img id="img_3" src="./assets/images/pot design 2.jpg" alt="plant">
 				<div class="designbox3">
-				<br>
-				<br>
+					<br> <br>
 					<p id="textinside">Plants for interiors</p>
-					<!-- <button>Explore more</button>-->
+
 				</div>
 			</div>
 		</div>

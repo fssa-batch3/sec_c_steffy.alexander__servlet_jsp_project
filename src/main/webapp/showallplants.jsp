@@ -68,7 +68,7 @@
 					<h3 class="pinkrose"><%=plant.getPlantName()%></h3>
 					
 				</div>
-				<br> <br> <a id="add" href="#">View
+				<br> <br> <a id="add" href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">View
 					Details</a>
 			</div>
 		</a>

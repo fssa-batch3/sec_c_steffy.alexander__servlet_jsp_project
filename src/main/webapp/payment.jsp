@@ -36,7 +36,7 @@
 	if (user != null) {
 		userName = user.getFirstName() + " " + user.getLastName();
 		email = user.getEmail();
-		address = user.getAddress();
+		address = user.getAddress()!=null?user.getAddress():"";
 		phoneNumber = user.getMobileNumber();
 	}
 	%>
@@ -57,15 +57,18 @@
 		
 		<label for="number"> Mobile.No <input
 							type="number" pattern="^(\\+91|91)?[6789]\\d{9}$" id="number" value="<%=phoneNumber%>"
-							 name="number" required>
+							 name="phoneNumber"  required>
 			</label><br>
 			
 			 <label for="amount">Total price<input
-			id="phone_num" autocomplete="off" type="number"
-			value="<%=plant.getPrice()%>" inputmode="numerical" placeholder=""
+			 autocomplete="off" type="number"
+			value="<%=plant.getPrice()%>" 
+			inputmode="numerical" placeholder=""
 			type="number" data-pattern-validatetype="number" name="phoneNumber"
 			required disabled /> <br /> <br /></label><br /> <label for="address">Delivery
 			Address</label>
+			
+			
 		<textarea id="address" name="address" required><%=address%></textarea>
 		<br /> <br />
 

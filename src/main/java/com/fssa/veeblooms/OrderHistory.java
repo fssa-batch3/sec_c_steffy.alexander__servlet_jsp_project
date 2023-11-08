@@ -20,35 +20,40 @@ import com.fssa.veeblooms.model.User;
 import com.fssa.veeblooms.service.OrderService;
 import com.fssa.veeblooms.service.UserService;
 
-
 @WebServlet("/OrderHistory")
 public class OrderHistory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		OrderService orderService = new OrderService();
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("LoggedUser");
-		int userId;
-		try {
-			userId = UserDAO.getUserIdByEmail(user.getEmail());
-			ArrayList<Order> orderDetails=orderService.getOrderById(userId);
-			request.setAttribute("orderDetails", orderDetails);
-		
-			
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./orderhistory.jsp");
-		
-			requestDispatcher.forward(request, response);
-			
-		} catch (DAOException | CustomException | SQLException e) {
-			System.out.println("Getting order details failed");
-			
-			e.printStackTrace();
-		}
-		
-	}
 
+		if (user == null) {
+			request.setAttribute("errorMsg", "Login / Session Expired");
+			request.setAttribute("path", "./login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+			rd.forward(request, response);
+		} else {
+			int userId;
+			try {
+				userId = UserDAO.getUserIdByEmail(user.getEmail());
+				ArrayList<Order> orderDetails = orderService.getOrderById(userId);
+				request.setAttribute("orderDetails", orderDetails);
+
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("./orderhistory.jsp");
+
+				requestDispatcher.forward(request, response);
+
+			} catch (DAOException | CustomException | SQLException e) {
+				System.out.println("Getting order details failed");
+
+				e.printStackTrace();
+			}
+		}
+
+	}
 
 }

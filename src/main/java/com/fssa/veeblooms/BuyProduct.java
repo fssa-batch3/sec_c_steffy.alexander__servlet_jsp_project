@@ -59,7 +59,7 @@ public class BuyProduct extends HttpServlet {
 			order.setTotalAmount(plant.getPrice());
 			order.setProductsList(productsList);
 			order.setOrderedDate(LocalDate.now());
-			order.setUserID(userId);
+			order.setUserID(userId);//user object
 			order.setAddress(address);
 			order.setPhoneNumber(phoneNumber);
 			order.setStatus(OrderStatus.ORDERED);

@@ -20,6 +20,7 @@
 
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
+	
 
 	System.out.print(user);
 

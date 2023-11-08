@@ -27,8 +27,8 @@
           if (records != null) {
             for (let i = 0; i < records.length; i++) {
               if (records[i].email == email) {
-                check = false;
-                break;
+               check = false;
+               break;
               }
             }
           }

@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 80px;
-    background-color: #F2F4F1;
+ 
     box-shadow: 0px 0.5px 10px black;
     position: sticky;
     top: 0;
@@ -150,9 +150,9 @@ h3{
     width:320px;
     height:40px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 15px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-
+    background-color:  #f7f7f7;
 }
 .search_box{
 display:flex;
@@ -160,10 +160,6 @@ position:relative;
 margin: 50px auto;
 width:400px;
 height:80px;
-
-/* background-size: 20px; */
-/* background-repeat: no-repeat; */
-
 }
 .search_box a{
 	color:black;

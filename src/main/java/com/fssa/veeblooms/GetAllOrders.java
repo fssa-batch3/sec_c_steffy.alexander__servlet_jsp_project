@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +26,16 @@ public class GetAllOrders extends HttpServlet {
 		OrderService orderService = new OrderService();
 
 		try {
-
+ 
 			ArrayList<Order> getallorder = OrderService.getOrder();
 			request.setAttribute("getallorder", getallorder);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./allorder.jsp");
 			
-
+			requestDispatcher.forward(request, response);
+			
 		} catch (DAOException | SQLException | CustomException e) {
-
+			System.out.println("Getting all order details failed");
+			
 			e.printStackTrace();
 		}
 

@@ -15,7 +15,6 @@
 <meta charset="ISO-8859-1">
 <title>veeblooms_plantdetails</title>
 <link rel="stylesheet" href="./assets/css/details.css">
-
 </head>
 <body>
 	<%
@@ -72,11 +71,12 @@
         </form>
        -->
 			<div class="buttons">
-				<button id="cart1">
-					<a href="<%=paymentPath%>">Buy Now</a>
-				</button>
+				<a href="<%=paymentPath%>" id="cart1">
+				Buy Now
+				</a>
+			
 				<!-- <button id="cart1">Add to Cart</button>-->
-			</div>
+			</div>	<br>
 			<hr />
 			<br />
 			<h3>Product description</h3>

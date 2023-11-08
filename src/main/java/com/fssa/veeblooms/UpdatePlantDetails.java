@@ -30,8 +30,11 @@ public class UpdatePlantDetails extends HttpServlet {
 		PlantService plantservice = new PlantService(new PlantValidator(), new PlantDAO());
 		List<Plant> plants = null;
 		try {
+			
+			Plant updatePlant = (Plant) request.getAttribute("plant");
 			plants = plantservice.getAllPlants();
 			request.setAttribute("allplants", plants);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("./updateplant.jsp");
 			Logger.info(plants);
 			rd.forward(request, response);
