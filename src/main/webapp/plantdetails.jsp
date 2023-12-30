@@ -29,8 +29,10 @@
 	Logger.info(plant + "  plant");
 	User user = (User) session.getAttribute("LoggedUser");
 	String paymentPath = "./login.jsp";
+	String cartPath ="./login.jsp";
 	if (user != null) {
 		paymentPath = "./payment.jsp?productId=" + id;
+		cartPath ="./AddToCart?plantId=" + id+"&plantPrice="+plant.getPrice();
 	}
 	%>
 
@@ -71,7 +73,10 @@
         </form>
        -->
 			<div class="buttons">
-				<a href="<%=paymentPath%>" id="cart1">
+			<a href="<%=cartPath%>" class="cart1">
+				Add to Cart
+				</a>
+				<a href="<%=paymentPath%>" class="cart1">
 				Buy Now
 				</a>
 			

@@ -36,7 +36,7 @@ public class OrderHistory extends HttpServlet {
 			request.setAttribute("path", "./login.jsp");
 			RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
 			rd.forward(request, response);
-		} else {
+		} else { 
 			int userId;
 			try {
 				userId = UserDAO.getUserIdByEmail(user.getEmail());

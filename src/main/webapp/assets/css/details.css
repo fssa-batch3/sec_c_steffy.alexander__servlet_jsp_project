@@ -295,7 +295,7 @@ select {
 /* #buy_now {
   margin-left: 15px;
 } */
-#cart1{
+.cart1{
    margin-top: 29px; 
   padding:8px 25px;
   /* line-height: 50px; */

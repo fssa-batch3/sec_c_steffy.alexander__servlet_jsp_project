@@ -15,13 +15,8 @@ console.log("In all orders page");
 })
   
   
-  
-  
-  
-  
-  
       const editStatusBtn = document.getElementById('editStatusBtn');
-const statusOptions = document.getElementById('statusOptions');
+      const statusOptions = document.getElementById('statusOptions');
 
 // Add a click event listener to the "Edit Status" button
 editStatusBtn.addEventListener('click', function () {

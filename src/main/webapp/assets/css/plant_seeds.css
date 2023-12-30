@@ -185,16 +185,16 @@ outline: none;
    display: none;
 }
 .box1,.box2 {
-    height: 350px;
+       height: 350px;
     width: 220px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin: 30px 30px ;
+    margin: 30px 30px;
     transition: 1s;
     color: brown;
     text-align: center;
     border-radius: 20px;
-    /* box-sizing: border-box */
-    padding:  10px;
+    /* box-sizing: border-box; */
+    padding: 10px;
 }
 
 .box1:hover, .box2:hover{

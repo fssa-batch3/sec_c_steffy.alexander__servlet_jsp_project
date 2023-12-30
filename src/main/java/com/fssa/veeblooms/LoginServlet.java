@@ -28,14 +28,14 @@ public class LoginServlet extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		UserService userservice = new UserService();
+		UserService userservice = new UserService(); 
 
 		if ("steffy12@veeblooms.com".equals(email) && "Steffy@123".equals(password)) {
 			try {
 				User user = userservice.login(email, password);
 				HttpSession session = request.getSession();
 				session.setAttribute("LoggedUser", user);
-				System.out.println("admin :"+user);
+				System.out.println("admin :"+user); 
 				session.setAttribute("isLogged", "true");
 				session.setAttribute("isAdmin", "true");
 				response.sendRedirect("./admin.jsp");
@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("path", "./login.jsp");
 					RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
 					rd.forward(request, response);
-				}
+				} 
 			} catch (DAOException | SQLException e) {
 
 				System.out.println(e.getMessage());

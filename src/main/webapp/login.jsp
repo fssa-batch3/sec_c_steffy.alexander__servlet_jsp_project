@@ -25,19 +25,18 @@
 
 			<label> <i id="loglog" class="fa-solid fa-envelope"></i> <input
 				type="email" placeholder="Email..." id="email" name="email" required>
-			</label> <br> 
-			<label> <i id="loglog" class="fa-solid fa-lock"></i>
+			</label> <br> <label> <i id="loglog" class="fa-solid fa-lock"></i>
 				<input type="password" placeholder="Password..." id="password"
 				title="Enter a uppercase, a lowercase, a number/special character"
-				pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name="password"
-				required>
-			</label><br> 
-<a id="account" href="./signup.jsp">don't have an account?</a> <br> <br> <br>
+				pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+				name="password" required >	</label><br><br>
+		
 
 
-			<button type="submit">Submit</button>
-			
-			
+			</label><button id="signupbtn" type="submit">SUBMIT</button><br>
+
+<br> <a id="account" href="./signup.jsp"><span id="new">New here?</span>
+				Create an account?</a> <br> <br> <br>
 		</div>
 
 	</form>
