@@ -20,13 +20,15 @@
 <link rel="stylesheet" href="./assets/css/cart.css" />
 </head>
 <body>
+
+	
 	<%
 	ArrayList<Cart> cartDetails = (ArrayList<Cart>) request.getAttribute("cartDetails");
 
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 
-
+	
 	<div class="center_content">
 		<div class="left_content" id="content">
 			<h1>Shopping Cart</h1>
@@ -39,6 +41,7 @@
 
 				
 			%>
+			
 			 <div class="product" id="product_details">
       <div class="product_img">
         <img src="<%=plant.getPlantImagesUrl().get(0)%>" alt="img">
@@ -46,15 +49,17 @@
       <div class="details">
         <h4 id="title"><%=plant.getPlantName()%></h4>
         <div class="adding">
-          <img name="minus" src="./assets/images/minus.png" class="minus">
+         <img name="minus" src="./assets/images/minus.png" class="minus" key=<%=cart.getCartId()%> quantity=<%=cart.getQuantity()%>>
           <p name="quantity" class="quantity"><%=cart.getQuantity()%></p>
-          <img name="add" src="./assets/images/add.png" class="add" >
+          <img name="add" src="./assets/images/add.png" class="add" key=<%=cart.getCartId()%> quantity= <%=cart.getQuantity()%>>
         </div>
-        <h5 class="price"><%=plant.getPrice()%></h5>
-        <img class="remove_cart" src="./assets/images/multiply-mathematical-sign.png">
+       
+        <h5 class="price"> &#8377; <%=cart.getTotalAmount()%> </h5>
+        <img class="remove_cart" key=<%=cart.getCartId()%> src="./assets/images/multiply-mathematical-sign.png">
       </div>
     </div> 
-			<%
+			
+		<%
 			}
 			%>
 			<!-- <hr>
@@ -81,37 +86,47 @@
 			
 				<h4>Your order</h4>
 
-				<div class="product_order_details"></div>
-				<!-- <h3><img src="../assests/images/blacktomato.jpg" alt="images">
-        Hibiscus</h3>
+			
+      <div class="product_order_details">
+      
+      
+			<%
+			
+			double totalPrice= 0;
+			
+			for (Cart cart : cartDetails) {
+
+				plant = PlantDAO.getPlantById(cart.getPlantId());
+				totalPrice+=(plant.getPrice()* cart.getQuantity());
+				
+			%>
+      <div class="product_order_detail">
+        <h3><img src="<%=plant.getPlantImagesUrl().get(0)%>" alt="images"><%=plant.getPlantName()%></h3>
         <div class="multiply">
-          <span class="quantity">3 x</span>
-          <span class="actual_price">100</span>
+          <span class="quantity"><%=cart.getQuantity()%> x</span>
+          <span class="actual_price"> &#8377; <%=plant.getPrice()%></span>
         </div>
-        <p class="total_price">300</p>
-      </div> -->
-				<!-- <div class="product_order_detail">
-        <h3>Hibiscus</h3>
-        <div class="multiply">
-          <span class="quantity">3 x</span>
-          <span class="actual_price">100</span>
-        </div>
-        <p class="total_price">300</p>
-      </div> -->
+        <p class="total_price">&#8377; <%=plant.getPrice()* cart.getQuantity()%></p>
+      </div>
+      <%} %>
+      
+     
+      </div>
+		
 
 				<div class="right_content_2">
 					<div class="product_order_detail">
 						<h3 class="sub_total">SubTotal</h3>
-						<h3 class="subtotal_value">0</h3>
+						<h3 class="subtotal_value">&#8377; <%=totalPrice %></h3>
 					</div>
 					<div class="product_order_detail">
 						<h3 class="shipping">Shipping</h3>
-						<h3 class="shipping_value">0</h3>
+						<h3 class="shipping_value">&#8377; 0</h3>
 					</div>
 					<hr id="total_hr">
 					<div class="product_order_detail">
 						<h3 class="total">Total</h3>
-						<h3 class="total_value">0</h3>
+						<h3 class="total_value">&#8377; <%=totalPrice %></h3>
 					</div>
 					<a id="proceed_button"><button>Proceed to Checkout</button></a>
 
@@ -127,7 +142,10 @@
 				</div>
 			</div>
 		</div>
+		
+		</form>
 		<script src="./assets/js/cart.js"></script>
+		
 </body>
 </html>
 

@@ -16,8 +16,8 @@ if(isAdmin=="true"){
 	%>
 	<header>
 	<div class="logo">
-		<img id="logo_img"
-			src="./assets/images/Picsart_22-12-05_14-49-34-612.png" alt="LOGO">
+		<a href="./home.jsp"><img id="logo_img"
+			src="./assets/images/Picsart_22-12-05_14-49-34-612.png" alt="LOGO"></a>
 	</div>
 
 	<div class="nav">
@@ -30,6 +30,8 @@ if(isAdmin=="true"){
 
 		<a id="profile_logo" href="<%=path%>"><img id="profile_logo"
 			src="<%=imgPath%>" alt=""> </a>
+			
+			
 		<%
 		} else {
 		%>
@@ -52,7 +54,7 @@ else{
 		<img id="logo_img"
 			src="./assets/images/Picsart_22-12-05_14-49-34-612.png" alt="LOGO">
 	</div>
-
+           
 	<div class="nav">
 		<a id="home_title" href="<%=homePath%>">Home</a> <a href="./ShowAllPlant">Plants</a>
 
@@ -71,6 +73,7 @@ else{
 		<%
 		}
 		%>
+		
 		<%
 		if (isLogged == true) {
 		%>

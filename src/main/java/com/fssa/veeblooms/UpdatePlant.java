@@ -73,7 +73,7 @@ public class UpdatePlant extends HttpServlet {
 		List<String> images = new ArrayList<String>();
 
 		// Retrieve form input parameters
-		String plantName = request.getParameter("plantName");
+		String plantName = request.getParameter("plantname");
 		String imageURL = request.getParameter("imageURL");
 		images.add(request.getParameter("mainimage"));
 		images.add(request.getParameter("image1"));
@@ -82,14 +82,14 @@ public class UpdatePlant extends HttpServlet {
 
 		// Create a Plant object and set its properties based on form input
 		Plant plant = new Plant();
-		plant.setPlantName(request.getParameter("plantname"));
+		plant.setPlantName(plantName);
 		plant.setPlantImagesUrl(images);
 		plant.setPlantType(PlantTypeEnum.valueOf(request.getParameter("planttype")));
 		plant.setPlantHeight(Float.parseFloat(request.getParameter("plantheight")));
 		plant.setPlantingSeason(request.getParameter("plantingseason"));
 		plant.setHybrid(HybridEnum.valueOf(request.getParameter("planthybrid")));
 		plant.setPrice(Double.parseDouble(request.getParameter("price")));
-		System.out.println(Double.parseDouble(request.getParameter("price")));
+
 
 		// Initialize PlantService with DAO and Validator
 		plantService.setPlantDAO(new PlantDAO());
@@ -103,13 +103,15 @@ public class UpdatePlant extends HttpServlet {
 
 			// Redirect to the "ShowAllPlant" servlet upon success
 			request.setAttribute("successMsg", "Plant details updated successfully!");
-			Logger.info("success");
+			Logger.info("success"+ plant);
+			
 		} catch (CustomException | DAOException | SQLException e) {
 
 			request.setAttribute("errorMsg", e.getMessage());
 			System.out.println(e.getMessage());
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
+		
 		request.setAttribute("path", "./UpdatePlantDetails");
 		RequestDispatcher rd = request.getRequestDispatcher("./UpdatePlantDetails");
 		rd.forward(request, response);

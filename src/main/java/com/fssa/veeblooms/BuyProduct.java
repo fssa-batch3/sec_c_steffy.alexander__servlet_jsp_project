@@ -42,7 +42,7 @@ public class BuyProduct extends HttpServlet {
 
 		int plantId = Integer.parseInt(request.getParameter("plantId"));
 		String address= request.getParameter("address");
-		String phoneNumber= request.getParameter("phoneNumber");
+		String phoneNumber= request.getParameter("number");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("LoggedUser");
 		Order order = new Order();

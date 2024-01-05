@@ -26,17 +26,19 @@ public class UpdatePlantDetails extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		System.out.println("iii");
 
 		PlantService plantservice = new PlantService(new PlantValidator(), new PlantDAO());
 		List<Plant> plants = null;
 		try {
-			
+			 
 			Plant updatePlant = (Plant) request.getAttribute("plant");
 			plants = plantservice.getAllPlants();
+			System.out.println("ooo");
 			request.setAttribute("allplants", plants);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("./updateplant.jsp");
-			Logger.info(plants);
+			Logger.info("uyvbh"+plants);
 			rd.forward(request, response);
 
 		} catch (DAOException | SQLException e) {

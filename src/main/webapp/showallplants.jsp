@@ -23,7 +23,6 @@
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
-	<h2 id="heading">PLANTS</h2>
 
 
 
@@ -54,7 +53,6 @@
 		PlantService plantService = new PlantService();
 		for (Plant plant : plants) {
 
-			//finding the plant id by using getplantidbyname method in plantservice
 		%>
 		<a
 			href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">
@@ -62,14 +60,15 @@
 			<div class="box1">
 				<div class="imgtrend" alt="trend">
 					<img src="<%=plant.getPlantImagesUrl().get(0)%>" alt="rose">
-
-					<i id="rs" class="fa-solid fa-indian-rupee-sign"><%=plant.getPrice()%></i>
+<h3 class="pinkrose"><%=plant.getPlantName()%></h3>
 					<br>
-					<h3 class="pinkrose"><%=plant.getPlantName()%></h3>
+				<p> &#8377; <%=plant.getPrice()%></p>
+					<br>
 					
 				</div>
-				<br> <br> <a id="add" href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">View
-					Details</a>
+				<br> <br>
+				<!--  <a id="add" href="./plantdetails.jsp?id=<%=plantService.getPlantIdByName(plant.getPlantName())%>">View
+				Details</a>-->
 			</div>
 		</a>
 		<%

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fssa.veeblooms.dao.CartDao;
 import com.fssa.veeblooms.dao.UserDAO;
 import com.fssa.veeblooms.exception.CustomException;
 import com.fssa.veeblooms.exception.DAOException;
@@ -45,18 +46,26 @@ public class AddToCart extends HttpServlet {
 			int plantId = Integer.parseInt(request.getParameter("plantId"));
 
 			double plantPrice = Double.parseDouble(request.getParameter("plantPrice"));
-			Cart cart = new Cart();
-			cart.setTotalAmount(plantPrice);
-			cart.setQuantity(1);
-
-			cart.setPlantId(plantId);
+			
+			
 
 			try {
 				int userId = UserDAO.getUserIdByEmail(user.getEmail());
-				cart.setUserId(userId);
-				CartService.addToCart(cart);
+				int cartId=CartDao.getCartIdByPlantId(plantId,userId);
+				if(cartId>0) {
+					CartService.increaseQuantity(cartId);
+					System.out.println("plant already exists, increased quantity");
+				}else {
+					Cart cart = new Cart();
+					cart.setTotalAmount(plantPrice);
+					cart.setQuantity(1);
+					cart.setPlantId(plantId);
+			
+					cart.setUserId(userId);       
+					CartService.addToCart(cart);
+					System.out.println("added to cart successfully");
+				}
 				response.sendRedirect("./CartDetails");
-				System.out.println("added to cart successfully");
 
 			} catch (DAOException | SQLException e) {
 				System.out.println(e.getMessage());

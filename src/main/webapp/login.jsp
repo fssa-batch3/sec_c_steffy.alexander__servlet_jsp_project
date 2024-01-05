@@ -12,7 +12,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-	<form action="./LoginServlet" method="get">
+	<form action="./LoginServlet" method="post">
 		<div class="main">
 			<div class="login">
 				<h2>Login</h2>

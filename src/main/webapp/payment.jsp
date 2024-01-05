@@ -18,6 +18,7 @@
 	href="https://fonts.googleapis.com/css2?family=Alkatra&family=Roboto+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="./assets/css/payment.css" />
+<link rel="stylesheet" href="./assets/css/header.css" />
 </head>
 <body>
 
@@ -52,13 +53,14 @@
 		<label for="fname">Name <input id="fname" type="text" pattern="[A-Za-z ]+"  title="Name should contain only alphabets (A-Z, a-z)"
 			value="<%=userName%>" required />
 		</label><br /> <br /> <br /> <label for="Email">Email Address <input
-			id="email" type="text" value="<%=email%>" required readonly />
+			id="email" type="text" value="<%=email%>" required disabled />
 		</label><br /> <br /> <br />
 		
 		<label for="number"> Mobile.No <input
-							type="number" pattern="^(\\+91|91)?[6789]\\d{9}$" id="number" value="<%=phoneNumber%>"
-							 name="phoneNumber"  required>
+							type="tel" pattern="^[1-9][0-9]*$" id="number" value="<%=phoneNumber%>"
+							 name=number  required>
 			</label><br>
+			
 			
 			 <label for="amount">Total price<input
 			 autocomplete="off" type="number"
@@ -136,11 +138,22 @@
 					<h4>Pay at your Doorstep.</h4>
 				</div>
 			</div>
+			
+			
+			
 			<div class="cash_delivery">
 				<p>By choosing cash on delivery, You can pay at your Door Step
 					after receiving the product</p>
 				<button type="submit">Confirm Order</button>
 			</div>
+			
+			
+			
+			
+			
+			
+			
+			
 			<!-- <div class="upipay pay">
 				<img src="./assets/images/UPI_icon.png" alt="upi" />
 				<div class="upi para">

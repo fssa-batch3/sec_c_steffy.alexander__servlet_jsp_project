@@ -37,11 +37,11 @@
 					<label for="name" class="form-label"> Name:</label> <input
 						class="form-control" type="text" id="name" name="plantName"
 						title="Plantname should only contain alphabets"
-						placeholder="Enter plant name" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" pattern="[a-zA-Z]+" required>
+						placeholder="Enter plant name" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" pattern="^[a-zA-Z ]+$" required>
 
 						
 					<label for="image" class="form-label">Image url:</label> <input
-						type="url" id="image" name="mainimage" ppattern="https?://\S+\.(png|jpg|jpeg|gif|bmp|svg|webp)"
+						type="text" id="image" name="mainimage"
 						 class="form-control"
 						 title="Enter a valid image URL (e.g., https://example.com/image.png)" required /> 
 						
@@ -54,7 +54,7 @@
 				<br>
 				<div class="details_page">
 					<label for="image_1" class="form-label"> image_1:</label> <input
-						type="text" id="image_1" name="image1" pattern="https?://\S+\.(png|jpg|jpeg|gif|bmp|svg|webp)"
+						type="text" id="image_1" name="image1" 
 						title="Enter a valid image URL (e.g., https://example.com/image.png)"  class="form-control"
 						placeholder="Enter image_1 URL" required />
 						
@@ -62,12 +62,12 @@
 						 <label for="image_2"
 						class="form-label"> image_2:</label> <input type="text"
 						class="form-control" id="image_2" name="image2"
-						pattern="https?://\S+\.(png|jpg|jpeg|gif|bmp|svg|webp)"
+						
 						title="Enter a valid image URL (e.g., https://example.com/image.png)"
 						placeholder="Enter image_2 URL" required /> <label for="image_3"
 						class="form-label"> image_3:</label> <input type="text"
 						id="image_3" name="image3" class="form-control"
-						pattern="https?://\S+\.(png|jpg|jpeg|gif|bmp|svg|webp)"
+						
 						title="Enter a valid image URL (e.g., https://example.com/image.png)"
 						placeholder="Enter image_3 URL" required /> <br /> <label
 						for="plantType" class="form-label">Select Plant Type:</label> <select

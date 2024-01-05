@@ -109,7 +109,7 @@
 						</label> <br> <label for="email"> Email <input type="email"
 							name="email" id="email" value="<%=user.getEmail()%>" readonly>
 						</label> <br> <label for="number"> Mobile.No <input
-							type="tel" pattern="[0-9]{10}" id="number" value="<%=mobNum%>"
+							type="tel" pattern="^[1-9][0-9]*$" id="number" value="<%=mobNum%>"
 							disabled name="number" required>
 
 

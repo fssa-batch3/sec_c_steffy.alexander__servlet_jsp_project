@@ -20,6 +20,7 @@
 	href="https://fonts.googleapis.com/css2?family=Alkatra&family=Roboto+Slab&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="./assets/css/home.css">
+<link rel="stylesheet" href="./assets/css/header.css" />
 
 
 
@@ -60,7 +61,7 @@
 				<div class="designbox1">
 					<br> <br>
 					<p id="textinside">Plants for home designing</p>
-					<!--  	<button>Explore more</button>-->
+			 		<!--  	<button>Explore more</button>-->
 				</div>
 			</div>
 

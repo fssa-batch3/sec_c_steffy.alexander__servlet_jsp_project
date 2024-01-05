@@ -25,7 +25,7 @@ public class Profile extends HttpServlet {
 			request.setAttribute("errorMsg", "Login / Session Expired");
 			request.setAttribute("path", "./login.jsp");
 			RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
-			rd.forward(request, response);
+			rd.forward(request, response); 
 		} else {
 			response.sendRedirect("./profile.jsp");
 		}
