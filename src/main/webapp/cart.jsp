@@ -1,7 +1,6 @@
 <%@page import="com.fssa.veeblooms.service.PlantService"%>
 <%@page import="com.fssa.veeblooms.dao.PlantDAO"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.fssa.veeblooms.model.*"%>
 <%@ page import="com.fssa.veeblooms.dao.*"%>
 <%@ page import="java.util.*"%>
@@ -31,7 +30,7 @@
 	
 	<div class="center_content">
 		<div class="left_content" id="content">
-			<h1>Shopping Cart</h1>
+			
 
 			<%
 			Plant plant = null;
@@ -128,7 +127,9 @@
 						<h3 class="total">Total</h3>
 						<h3 class="total_value">&#8377; <%=totalPrice %></h3>
 					</div>
-					<a id="proceed_button"><button>Proceed to Checkout</button></a>
+					
+					<a href="./payment.jsp" id="proceed_button"><button>Proceed to Checkout</button></a>
+			
 
 
 					<!-- <div class="total_calculation">
@@ -136,7 +137,6 @@
         <span>Total</span>
         <span id="total_in_num">340+450=790</span>
       </p>
-
     </div> -->
 
 				</div>

@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fssa.veeblooms.dao.CartDao;
 import com.fssa.veeblooms.dao.PlantDAO;
 import com.fssa.veeblooms.dao.UserDAO;
 import com.fssa.veeblooms.enumclass.OrderStatus;
 import com.fssa.veeblooms.exception.CustomException;
 import com.fssa.veeblooms.exception.DAOException;
+import com.fssa.veeblooms.model.Cart;
 import com.fssa.veeblooms.model.Order;
 import com.fssa.veeblooms.model.OrderedProduct;
 import com.fssa.veeblooms.model.Plant;
@@ -28,34 +30,50 @@ import com.fssa.veeblooms.service.PlantService;
 import com.fssa.veeblooms.util.Logger;
 import com.fssa.veeblooms.validator.PlantValidator;
 
-@WebServlet("/BuyProduct")
-public class BuyProduct extends HttpServlet {
+/**
+ * Servlet implementation class PlaceOrder
+ */
+@WebServlet("/PlaceOrder")
+public class PlaceOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	PlantService plantService = new PlantService(new PlantValidator(), new PlantDAO());
 	OrderService orderService = new OrderService();
 
+   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	}
 
-		int plantId = Integer.parseInt(request.getParameter("plantId"));
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	
 		String address= request.getParameter("address");
 		String phoneNumber= request.getParameter("number");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("LoggedUser");
 		Order order = new Order();
-		OrderedProduct orderProduct = new OrderedProduct();
+
 		try {
-			Plant plant = plantService.getPlantById(plantId);
+		
 			List<OrderedProduct> productsList = new ArrayList<>();
+			
 			int userId = UserDAO.getUserIdByEmail(user.getEmail());
-			orderProduct.setProductId(plantId);
-			orderProduct.setProductPrice(plant.getPrice());
-			orderProduct.setQuantity(1);
-			orderProduct.setTotalAmount(plant.getPrice());
-			productsList.add(orderProduct);
-			order.setTotalAmount(plant.getPrice());
+			ArrayList<Cart> cartDetailsByUserId = CartDao.getCartDetailsByUserId(userId);
+			Double totalAmount=0d;
+			for(Cart cart:cartDetailsByUserId) {
+				OrderedProduct orderProduct = new OrderedProduct();
+				orderProduct.setProductId(cart.getPlantId());
+				orderProduct.setProductPrice(cart.getTotalAmount()/cart.getQuantity());
+				orderProduct.setQuantity(cart.getQuantity());
+				orderProduct.setTotalAmount(cart.getTotalAmount());
+				productsList.add(orderProduct);
+				totalAmount+=cart.getTotalAmount();
+				
+			}
+			
+			order.setTotalAmount(totalAmount);
 			order.setProductsList(productsList);
 			order.setOrderedDate(LocalDate.now());
 			order.setUserID(userId);//user object
@@ -72,12 +90,12 @@ public class BuyProduct extends HttpServlet {
 			Logger.info("Order Failed"+e.getMessage());
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());
-			request.setAttribute("path","./payment.jsp?productId="+plantId);		
+			request.setAttribute("path","./payment.jsp");		
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("./payment.jsp?productId="+plantId);
+		RequestDispatcher rd = request.getRequestDispatcher("./payment.jsp");
 		rd.forward(request, response);
 
-	}
+}
 
 }

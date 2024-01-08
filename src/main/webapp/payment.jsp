@@ -27,8 +27,7 @@
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
 	System.out.print(user);
-	int plantId = Integer.parseInt(request.getParameter("productId"));
-	Plant plant = PlantDAO.getPlantById(plantId);
+	
 
 	String userName = "";
 	String email = "";
@@ -45,7 +44,7 @@
 
 
 	<h3 id="address_head">Address Details</h3>
-	<form id="payment_form" action="./BuyProduct?plantId=<%=plantId%>"
+	<form id="payment_form" action="./PlaceOrder"
 		method="post">
 
 
@@ -64,7 +63,7 @@
 			
 			 <label for="amount">Total price<input
 			 autocomplete="off" type="number"
-			value="<%=plant.getPrice()%>" 
+			value="0000" 
 			inputmode="numerical" placeholder=""
 			type="number" data-pattern-validatetype="number" name="phoneNumber"
 			required disabled /> <br /> <br /></label><br /> <label for="address">Delivery
@@ -113,6 +112,7 @@
 		<!-- <div class="last">
             <a href="payment2.html" id="submit">Next</a>
           </div> -->
+          
 
 
 		<div class="container">
