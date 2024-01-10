@@ -28,17 +28,19 @@
 	User user = (User) session.getAttribute("LoggedUser");
 	System.out.print(user);
 	
-
+    
 	String userName = "";
 	String email = "";
 	String address = "";
 	String phoneNumber = "";
+	double totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
 	if (user != null) {
 		userName = user.getFirstName() + " " + user.getLastName();
 		email = user.getEmail();
 		address = user.getAddress()!=null?user.getAddress():"";
 		phoneNumber = user.getMobileNumber();
-	}
+		
+				}
 	%>
 
 
@@ -56,14 +58,14 @@
 		</label><br /> <br /> <br />
 		
 		<label for="number"> Mobile.No <input
-							type="tel" pattern="^[1-9][0-9]*$" id="number" value="<%=phoneNumber%>"
+							type="tel" pattern="^[1-9][0-9]*$" id="number" title="Mobile Phone Should Only Contain Valid Numbers" value="<%=phoneNumber%>"
 							 name=number  required>
 			</label><br>
 			
 			
 			 <label for="amount">Total price<input
 			 autocomplete="off" type="number"
-			value="0000" 
+			value="<%=totalPrice %>" 
 			inputmode="numerical" placeholder=""
 			type="number" data-pattern-validatetype="number" name="phoneNumber"
 			required disabled /> <br /> <br /></label><br /> <label for="address">Delivery
@@ -99,7 +101,7 @@
 
 
 
-		<!-- <div class="total_calculation">
+		 <!-- <div class="total_calculation">
       <p>
         <span>Total</span>
         <span id="total_in_num">340+450=790</span>

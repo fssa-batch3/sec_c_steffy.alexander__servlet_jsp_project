@@ -76,10 +76,10 @@
 			<a href="<%=cartPath%>" class="cart1">
 				Add to Cart
 				</a>
-				<a href="<%=paymentPath%>" class="cart1">
+				<!--<a href="<%=paymentPath%>" class="cart1">
 				Buy Now
 				</a>
-			
+			-->
 				<!-- <button id="cart1">Add to Cart</button>-->
 			</div>	<br>
 			<hr />

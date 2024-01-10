@@ -18,6 +18,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="./assets/css/cart.css" />
 </head>
+
 <body>
 
 	
@@ -128,7 +129,7 @@
 						<h3 class="total_value">&#8377; <%=totalPrice %></h3>
 					</div>
 					
-					<a href="./payment.jsp" id="proceed_button"><button>Proceed to Checkout</button></a>
+					<a href="./payment.jsp?totalPrice=<%=totalPrice %>" id="proceed_button"><button>Proceed to Checkout</button></a>
 			
 
 
@@ -144,6 +145,8 @@
 		</div>
 		
 		</form>
+		
+	
 		<script src="./assets/js/cart.js"></script>
 		
 </body>

@@ -16,13 +16,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="./header.jsp"></jsp:include>
+	<jsp:include page="./header.jsp"></jsp:include>
 	<h3 id="heading">Ordered Products :</h3>
 	<%
 	ArrayList<Order> getallorder = (ArrayList<Order>) request.getAttribute("getallorder");
 	%>
 
-	<div class="main"> 
+	<div class="main">
 
 		<div class="center">
 			<%
@@ -44,7 +44,9 @@
 						<div class="rightContent_header">
 
 							<h2 name="OrderId"><%=plant.getPlantName()%></h2>
-							<p>&#x20b9; <%=plant.getPrice()%></p>
+							<p>
+								&#x20b9;
+								<%=plant.getPrice()%></p>
 						</div>
 
 
@@ -54,7 +56,7 @@
 									Quantity :<span><%=product.getQuantity()%></span>
 								</p>
 								<p>
-									User Id <span name="orderId"><%=order.getOrderId()%></span>
+									User Id <span name="orderId"><%=order.getUserID()%></span>
 								</p>
 								<p>
 									Order on <span><%=order.getOrderedDate()%></span>
@@ -74,13 +76,14 @@
 			%>
 
 		</div>
- 
+
 
 		<div class="rightoutcontent">
 			<%
 			if (getallorder != null) {
 				User user;
 				for (Order order : getallorder) {
+					for (OrderedProduct product : order.getProductsList()) {
 
 					user = UserDAO.getUserById(order.getUserID());
 			%>
@@ -106,27 +109,24 @@
 						<p id="statusorder">
 							Ordered on
 							<%=order.getModifiedDate()%>
-							<a href="ProductShipped?orderId=<%=order.getOrderId()%>" style="background-color:#3b71ca ;color:white;">Mark
-									as Shipped</a>
-							</p>
-							
-					<%
+							<a href="ProductShipped?orderId=<%=order.getOrderId()%>"
+								style="background-color: #3b71ca; color: white;">Mark as
+								Shipped</a>
+						</p> <%
  } else if (order.getStatus().toString().equals("SHIPPED")) {
  %>
-       <p id="statusorder">
+						<p id="statusorder">
 							Shipped on
 							<%=order.getModifiedDate()%>
-							
-							<a  href="DeliveredOrder?orderId=<%=order.getOrderId()%>" style="background-color:#3fa32f ;color:white;">Mark
-								as Delivered </a>
-						
-						</p>
 
+							<a href="DeliveredOrder?orderId=<%=order.getOrderId()%>"
+								style="background-color: #3fa32f; color: white;">Mark as
+								Delivered </a>
 
-						 <%
+						</p> <%
  } else if (order.getStatus().toString().equals("DELIVERED")) {
  %>
-						<p id="statusdeliver" >
+						<p id="statusdeliver">
 							Delivered on :
 							<%=order.getModifiedDate()%>
 						</p> <%
@@ -143,6 +143,7 @@
 			</div>
 
 			<%
+					}
 			}
 			}
 			%>
@@ -150,7 +151,7 @@
 	</div>
 
 
-	
+
 	<script src="./assets/js/allorder.js"></script>
 	<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 

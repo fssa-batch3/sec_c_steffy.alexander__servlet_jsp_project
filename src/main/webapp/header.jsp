@@ -63,9 +63,10 @@ if (isAdmin == "true") {
 		%>
 
 		
-			<a href="./CartDetails">Cart</a>
+			
 			<a id="profile_logo" href="<%=path%>"><img id="profile_logo"
 			src="<%=imgPath%>" alt=""> </a>
+			<a href="./CartDetails">Cart</a>
 			
 		<%
 		} else {

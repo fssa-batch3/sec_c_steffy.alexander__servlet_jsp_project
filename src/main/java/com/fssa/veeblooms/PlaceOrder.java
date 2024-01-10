@@ -36,66 +36,72 @@ import com.fssa.veeblooms.validator.PlantValidator;
 @WebServlet("/PlaceOrder")
 public class PlaceOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	PlantService plantService = new PlantService(new PlantValidator(), new PlantDAO());
 	OrderService orderService = new OrderService();
 
-   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	
-		String address= request.getParameter("address");
-		String phoneNumber= request.getParameter("number");
+		String address = request.getParameter("address");
+		String phoneNumber = request.getParameter("number");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("LoggedUser");
 		Order order = new Order();
 
 		try {
-		
+
 			List<OrderedProduct> productsList = new ArrayList<>();
-			
+
 			int userId = UserDAO.getUserIdByEmail(user.getEmail());
+			
 			ArrayList<Cart> cartDetailsByUserId = CartDao.getCartDetailsByUserId(userId);
-			Double totalAmount=0d;
-			for(Cart cart:cartDetailsByUserId) {
+			
+			Double totalAmount = 0d;
+			
+			for (Cart cart : cartDetailsByUserId) {
+				
 				OrderedProduct orderProduct = new OrderedProduct();
 				orderProduct.setProductId(cart.getPlantId());
-				orderProduct.setProductPrice(cart.getTotalAmount()/cart.getQuantity());
+				orderProduct.setProductPrice(cart.getTotalAmount() / cart.getQuantity());
 				orderProduct.setQuantity(cart.getQuantity());
 				orderProduct.setTotalAmount(cart.getTotalAmount());
-				productsList.add(orderProduct);
-				totalAmount+=cart.getTotalAmount();
 				
+				productsList.add(orderProduct);//arrraylist of ordered products
+				
+				 
+				totalAmount += cart.getTotalAmount();
+
 			}
-			
+
 			order.setTotalAmount(totalAmount);
 			order.setProductsList(productsList);
 			order.setOrderedDate(LocalDate.now());
-			order.setUserID(userId);//user object
+			order.setUserID(userId);
 			order.setAddress(address);
 			order.setPhoneNumber(phoneNumber);
 			order.setStatus(OrderStatus.ORDERED);
 			Logger.info(order);
 			orderService.addOrder(order);
-			request.setAttribute("successMsg", "Order placed successful");
+			request.setAttribute("successMsg", "Order placed successfully");
 			request.setAttribute("path", "./OrderHistory");
-			
+
 			Logger.info("Order Placed Sucessfully ");
 		} catch (DAOException | SQLException | CustomException e) {
-			Logger.info("Order Failed"+e.getMessage());
+			Logger.info("Order Failed" + e.getMessage());
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());
-			request.setAttribute("path","./payment.jsp");		
+			request.setAttribute("path", "./payment.jsp");
 		}
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("./payment.jsp");
 		rd.forward(request, response);
 
-}
+	}
 
 }
