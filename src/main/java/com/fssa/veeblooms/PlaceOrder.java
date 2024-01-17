@@ -42,66 +42,71 @@ public class PlaceOrder extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String address = request.getParameter("address");
-		String phoneNumber = request.getParameter("number");
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("LoggedUser");
-		Order order = new Order();
+		if (user == null) {
+			request.setAttribute("errorMsg", "Login / Session Expired");
+			request.setAttribute("path", "./login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
+			rd.forward(request, response);
+		} else {
+			String address = request.getParameter("address");
+			String phoneNumber = request.getParameter("number");
 
-		try {
+			Order order = new Order();
+			System.out.println(user + "jkhvgcf ");
 
-			List<OrderedProduct> productsList = new ArrayList<>();
+			try {
 
-			int userId = UserDAO.getUserIdByEmail(user.getEmail());
-			
-			ArrayList<Cart> cartDetailsByUserId = CartDao.getCartDetailsByUserId(userId);
-			
-			Double totalAmount = 0d;
-			
-			for (Cart cart : cartDetailsByUserId) {
-				
-				OrderedProduct orderProduct = new OrderedProduct();
-				orderProduct.setProductId(cart.getPlantId());
-				orderProduct.setProductPrice(cart.getTotalAmount() / cart.getQuantity());
-				orderProduct.setQuantity(cart.getQuantity());
-				orderProduct.setTotalAmount(cart.getTotalAmount());
-				
-				productsList.add(orderProduct);//arrraylist of ordered products
-				
-				 
-				totalAmount += cart.getTotalAmount();
+				List<OrderedProduct> productsList = new ArrayList<>();
 
+				int userId = UserDAO.getUserIdByEmail(user.getEmail());
+
+				ArrayList<Cart> cartDetailsByUserId = CartDao.getCartDetailsByUserId(userId);
+
+				Double totalAmount = 0d;
+
+				for (Cart cart : cartDetailsByUserId) {
+
+					OrderedProduct orderProduct = new OrderedProduct();
+					orderProduct.setProductId(cart.getPlantId());
+					orderProduct.setProductPrice(cart.getTotalAmount() / cart.getQuantity());
+					orderProduct.setQuantity(cart.getQuantity());
+					orderProduct.setTotalAmount(cart.getTotalAmount());
+					productsList.add(orderProduct);
+					totalAmount += cart.getTotalAmount();
+
+				}
+
+				order.setTotalAmount(totalAmount);
+				order.setProductsList(productsList);
+				order.setOrderedDate(LocalDate.now());
+				order.setUserID(userId);
+				order.setAddress(address);
+				order.setPhoneNumber(phoneNumber);
+				order.setStatus(OrderStatus.ORDERED);
+				Logger.info(order);
+				orderService.addOrder(order);
+				request.setAttribute("successMsg", "Order placed successfully");
+				request.setAttribute("path", "./OrderHistory");
+
+				Logger.info("Order Placed Sucessfully ");
+			} catch (DAOException | SQLException | CustomException e) {
+				Logger.info("Order Failed" + e.getMessage());
+				e.printStackTrace();
+				request.setAttribute("errorMsg", e.getMessage());
+				request.setAttribute("path", "./payment.jsp");
 			}
 
-			order.setTotalAmount(totalAmount);
-			order.setProductsList(productsList);
-			order.setOrderedDate(LocalDate.now());
-			order.setUserID(userId);
-			order.setAddress(address);
-			order.setPhoneNumber(phoneNumber);
-			order.setStatus(OrderStatus.ORDERED);
-			Logger.info(order);
-			orderService.addOrder(order);
-			request.setAttribute("successMsg", "Order placed successfully");
-			request.setAttribute("path", "./OrderHistory");
+			RequestDispatcher rd = request.getRequestDispatcher("./OrderHistory");
+			rd.forward(request, response);
 
-			Logger.info("Order Placed Sucessfully ");
-		} catch (DAOException | SQLException | CustomException e) {
-			Logger.info("Order Failed" + e.getMessage());
-			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getMessage());
-			request.setAttribute("path", "./payment.jsp");
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("./payment.jsp");
-		rd.forward(request, response);
-
 	}
-
 }

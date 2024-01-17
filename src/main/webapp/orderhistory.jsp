@@ -56,6 +56,8 @@
 		<%
 		for (Order order : orderDetails) {
 
+			
+			
 			for (OrderedProduct product : order.getProductsList()) {
 
 				Plant plant = PlantDAO.getPlantById(product.getProductId());

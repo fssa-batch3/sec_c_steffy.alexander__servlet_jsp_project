@@ -26,7 +26,7 @@
 
 	<%
 	User user = (User) session.getAttribute("LoggedUser");
-	System.out.print(user);
+	System.out.println(user);
 	
     
 	String userName = "";
@@ -34,6 +34,7 @@
 	String address = "";
 	String phoneNumber = "";
 	double totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
+	System.out.println(totalPrice);
 	if (user != null) {
 		userName = user.getFirstName() + " " + user.getLastName();
 		email = user.getEmail();
@@ -46,10 +47,7 @@
 
 
 	<h3 id="address_head">Address Details</h3>
-	<form id="payment_form" action="./PlaceOrder"
-		method="post">
-
-
+	<form id="payment_form" action="./PlaceOrder" method="post">
 
 		<label for="fname">Name <input id="fname" type="text" pattern="[A-Za-z ]+"  title="Name should contain only alphabets (A-Z, a-z)"
 			value="<%=userName%>" required />
@@ -76,61 +74,9 @@
 		<br /> <br />
 
 
-
-
-
-
-
-		<!-- <h3><img src="../assests/images/blacktomato.jpg" alt="images">
-        Hibiscus</h3>
-        <div class="multiply">
-          <span class="quantity">3 x</span>
-          <span class="actual_price">100</span>
-        </div>
-        <p class="total_price">300</p>
-      </div> -->
-		<!-- <div class="product_order_detail">
-        <h3>Hibiscus</h3>
-        <div class="multiply">
-          <span class="quantity">3 x</span>
-          <span class="actual_price">100</span>
-        </div>
-        <p class="total_price">300</p>
-      </div> -->
-
-
-
-
-		 <!-- <div class="total_calculation">
-      <p>
-        <span>Total</span>
-        <span id="total_in_num">340+450=790</span>
-      </p>
-
-    </div> -->
-
-
-
-		<!-- <div class="last">
-            <a href="payment2.html" id="submit">Next</a>
-          </div> -->
-          
-
-
 		<div class="container">
 			<div class="payment">
 				<h3>Select a payment method</h3>
-			<!-- 	<a class="card pay click"> <img
-					src="./assets/images/card icon.png" alt="card" />
-					<div class="card para">
-						<h2>Card</h2>
-						<h4>Visa, Mastecard, RuPay and Maestro</h4>
-					</div>
-				</a>
- -->
-		
-
-		
 
 		<div class="other_apps">
 			<div class="paylater pay">
@@ -148,54 +94,10 @@
 					after receiving the product</p>
 				<button type="submit">Confirm Order</button>
 			</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			<!-- <div class="upipay pay">
-				<img src="./assets/images/UPI_icon.png" alt="upi" />
-				<div class="upi para">
-					<h2>UPI</h2>
-					<h4>Pay with installed app, or use others</h4>
-				</div>
-			</div>
-			<div class="upi_trans">
-				<div class="icons">
-					<img id="gpay" src="./assets/images/gpay_icon.png" alt="gpay" /> <img
-						id="paytm" src="./assets/images/paytm_logo.png" alt="paytm" /> <img
-						src="./assets/images/phonepe.png" alt="phonepe" />
-				</div>
-				<label for="upi_id">Enter your UPI Id <input type="email"
-					id="upi_id" placeholder="robert@oksbibank" /></label>
 
-				<button type="submit">Place Order</button>
-			</div>-->
 		</div>
 		</div>
 
-		<!--   <div class="pro_details">
-        <h2>Price details</h2>
-        <hr />
-        <div class="price">
-          <p>Price ( <span id="num_items"> 1 </span> item)</p>
-          <p>₹<span class="rs">200</span></p>
-        </div>
-        <div class="delivery_charges">
-          <p>Delivery Charges</p>
-          <p>FREE</p>
-        </div>
-        <hr />
-        <div class="amount_payable">
-          <p>Total Amount Payable</p>
-          <p>₹<span class="rs">200</span></p>
-        </div>
-      <a  id="order_history" href="/pages/order.html">Want to see Order history?</a>
-
-      </div>-->
 		</div>
 	</form>
 	<script src="./assets/js/paymentform.js"></script>
