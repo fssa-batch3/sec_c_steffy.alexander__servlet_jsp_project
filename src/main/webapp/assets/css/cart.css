@@ -14,24 +14,6 @@ body {
    /* background-color: #F2F4F1;*/
 }
 
-header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    background-color:white;
-    box-shadow: 0px 0.5px 10px black;
-    z-index: 20;
-    position: sticky;
-    top: 0;
-}
-
-header a {
-    text-decoration: none;
-    color: #171a0f;
-    display: flex;
-    align-items: center;
-}
 
 .nav {
     display: flex;
@@ -76,11 +58,7 @@ header a {
     color: #30650f;
 }
 
-#cart {
-    width: 80px;
-    height: 60px;
-}
-#cart:hover {
+#cart_img:hover {
   border: none;
   outline: none;
 }
@@ -121,7 +99,9 @@ header a {
     
   }
   
-  
+  .plantPriceDetails{
+  font-family:Poppins;
+  }
   
 .cartContents {
   font-family: "Nunito", sans-serif;
@@ -166,6 +146,9 @@ header a {
   justify-content: space-between;
   align-items: center;
 }
+#cart_img{
+	width:47px;
+}
 .plantPriceDetails div {
   padding: 10px 0px;
   text-align: center;
@@ -203,4 +186,20 @@ header a {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.container {
+    margin: 20px auto;
+    padding: 32px;
+    margin-top:50px;
+    width:70%;
+    margin-top:50px;
+   
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.container p{
+	 font-family:Poppins;
+    font-size:24px;
+    margin-left:20px;
 }

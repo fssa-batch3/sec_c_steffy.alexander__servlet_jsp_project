@@ -5,13 +5,30 @@ header {
     justify-content: space-between;
     height: 80px;
     background-color: white;
-    box-shadow: 0px 0.5px 10px black;
+      box-shadow: 0px 0px 3px black;
     z-index: 20;
     position: sticky;
     top: 0;
 }
+header a {
+  text-decoration: none;
+  color: #171a0f;
+  display: flex;
+  align-items: center;
+    font-family: poppins;
+  font-weight:600;
+  font-size: 80px;
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+}
+#cart_img{
+	width:47px;
+}
+#cart_img:hover{
+	border:none;
+	outline:none;
 }

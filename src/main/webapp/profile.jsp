@@ -15,6 +15,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
 	rel="stylesheet">
+	<link rel="stylesheet" href="./assets/css/header.css" />
 </head>
 <body>
 

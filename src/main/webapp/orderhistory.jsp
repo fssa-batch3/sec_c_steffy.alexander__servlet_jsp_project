@@ -9,18 +9,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="./assets/css/order.css" />
+<link rel="stylesheet" href="./assets/css/orderhistory.css" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
 	rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet" />
-	<link rel="stylesheet" href="./assets/css/header.css" />
+<link rel="stylesheet" href="./assets/css/header.css" />
 <title>Document</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<%
 	ArrayList<Order> orderDetails = (ArrayList<Order>) request.getAttribute("orderDetails");
@@ -28,34 +28,40 @@
 	System.out.print(orderDetails + "got");
 	%>
 
-	<h1 class="heading">Order History</h1>
-	<h3 class="all_orders">All Orders</h3>
+	
+<div class="container">
+<p>
+My Orders
+</p>
+</div>
 
-	<table style="margin-top: 20px">
+	
 
+		<div class="orderContents">
 
-		<tr class="titles">
-			<td class="id" style="width: 5px">ID</td>
-			<td class="product" style="width: 100px">Product</td>
-			<td class="price" style="width: 50px">Price</td>
-			<td class="quantity" style="width: 15px">Quantity</td>
-			<td class="totalprice" style="width: 30px">Total Price</td>
-			<td class="delivery_address">Delivery address</td>
-			<td class="ordered_date" style="width: 100px">Ordered date</td>
-
-			<td class="delivered_date" style="width: 100px">Delivered Date</td>
-			<td class="status" style="width: 20px">Status</td>
-
-
-			<td class="cancel" style="width: 20px">Cancel Order</td>
-
-
-		</tr>
-
-
-		<%
+			<%
 		for (Order order : orderDetails) {
+%>
+			<div class="orderContent">
+				<div class="orderHeading flex">
+					<div class="orderedOn">
+						<h4 id="heading">
+						<%=order.getStatus().toString() %>
+						 on :<span id="date"> <%=order.getModifiedDate() %></span>
+						</h4>
+						<p id="name">By <%%>Steffy</p>
+					</div>
+					<div class="totalNoProducts">
+						<h3 id="Quantity">Qt: <span id="valnum"><%=order.getProductsList().size() %></span></h3>
+					</div>
+					<div class="totalPrice">
+						<h3>&#x20b9; <%=order.getTotalAmount() %> /-</h3>
+					</div>
+					<img class="dropDown" src="./assets/images/dropdown.png" />
+				</div>
 
+				<div class="orderContentDetails">
+					<% 
 			
 			
 			for (OrderedProduct product : order.getProductsList()) {
@@ -63,61 +69,49 @@
 				Plant plant = PlantDAO.getPlantById(product.getProductId());
 		%>
 
-		<tr class="details">
-			<td class="id" name="orderId" style="width: 5px"><%=order.getOrderId()%></td>
-			<td class="product" style="width: 90px"><%=plant.getPlantName()%></td>
-			<td class="price" style="width: 20px"><%=plant.getPrice()%></td>
-			<td class="quantity" style="width: 15px"><%=product.getQuantity()%></td>
-			<td class="totalprice" style="width: 30px"><%=product.getTotalAmount()%></td>
-			<td class="delivery_address" style="width: 50px"><%=order.getAddress()%></td>
-			<td class="ordered_date" style="width: 40px"><%=order.getOrderedDate()%></td>
-			<%
-			if (order.getStatus().toString().equals("DELIVERED")) {
-			%>
+					<div class="outcontent">
+						<p class="status"><%=order.getStatus() %></p>
+						<div class="content">
+							<div class="leftContent">
+								<img src="<%=plant.getPlantImagesUrl().get(0) %>" alt="" />
+							</div>
+							<div class="rightContent">
+								<div class="rightContent_header">
+									<h2 name="OrderId"><%=plant.getPlantName() %></h2>
+									<p>&#x20b9; <%=product.getProductPrice()*product.getQuantity()%></p>
+								</div>
 
-			<td class="delivered_date" style="width: 40px"><%=order.getModifiedDate()%></td>
-			<%
-			} else {
-			%>
-			<td class="delivered_date" style="width: 40px">---</td>
-			<%
+								<div class="rightContent_footer">
+									<div>
+										<p>
+											Quantity :<span><%=product.getQuantity() %></span>
+										</p>
+
+										<p>
+											Order on <span><%=order.getOrderedDate() %></span>
+										</p>
+										<p>
+											Product price <span><%=plant.getPrice() %></span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<%
 			}
 			%>
-
-			<td class="status" style="width: 20px"><%=order.getStatus()%></td>
-
-
-
-			<%
-			if (!order.getStatus().toString().equals("CANCELLED")) {
-			%>
-
-			<td class="cancel-cell" style="width: 45px">
-				<button style="padding: 20px;">
-					<a href="CancelOrder?orderId=<%=order.getOrderId()%>">Cancel
-						Order</a>
-				</button>
-			</td>
-			<%
-			} else {
-			%>
-			<td class="cancel-cell" style="width: 45px">---</td>
-			<%
+				</div>
+				</div>
+				<%
 			}
 			%>
-		
-		<tr>
+			
+		</div>
 
-
-
-			<%
-			}
-			}
-			%>
-		
-	</table>
-
+	
 	<jsp:include page="./successErrorMsg.jsp"></jsp:include>
+	<script src="./assets/js/orderHistory.js"></script>
 </body>
 </html>
 

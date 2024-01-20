@@ -28,7 +28,7 @@ header a {
   color: #171a0f;
   display: flex;
   align-items: center;
-  font-family: "Carter One", cursive;
+  font-weight:600;
   font-size: 80px;
 }
 /* 

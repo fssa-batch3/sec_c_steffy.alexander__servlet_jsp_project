@@ -38,7 +38,7 @@
 				<p class="status"><%=order.getStatus()%></p>
 				<div class="content">
 					<div class="leftContent">
-						<img src=<%=plant.getPlantImagesUrl().get(1)%> alt="" />
+						<img src=<%=plant.getPlantImagesUrl().get(0)%> alt="" />
 					</div>
 					<div class="rightContent">
 						<div class="rightContent_header">

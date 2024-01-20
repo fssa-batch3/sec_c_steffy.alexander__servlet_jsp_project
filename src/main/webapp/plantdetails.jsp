@@ -15,6 +15,7 @@
 <meta charset="ISO-8859-1">
 <title>veeblooms_plantdetails</title>
 <link rel="stylesheet" href="./assets/css/details.css">
+
 </head>
 <body>
 	<%

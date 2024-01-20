@@ -66,7 +66,7 @@ if (isAdmin == "true") {
 			
 			<a id="profile_logo" href="<%=path%>"><img id="profile_logo"
 			src="<%=imgPath%>" alt=""> </a>
-			<a href="./CartDetails">Cart</a>
+			<a id="cart_img" href="./CartDetails"><img id="cart_img" src="./assets/images/cart.png" alt="LOGO"></a>
 			
 		<%
 		} else {
@@ -81,7 +81,7 @@ if (isAdmin == "true") {
 		<%
 		if (isLogged == true) {
 		%>
-		<a href="./OrderHistory">Order History </a>
+		<a href="./OrderHistory">My Orders</a>
 		<%
 		} else {
 		%>
