@@ -30,12 +30,14 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 
-
 <div class="container">
 <p>
 Shopping Cart
 </p>
 </div>
+<%if(cartDetails.size()!=0){
+	
+%>
 
 	<div class="cartContents">
 
@@ -113,9 +115,21 @@ Shopping Cart
 			</div>
 		</div>
 	</div>
+	<% 
+}
+else{
 	
+
+	%>
+
 	
-			
+	<div class="emptyCart">
+	<img src="./assets/images/empty_cart.png" alt="empty cart">
+	</div>
+	
+		<%
+		}
+		%>	
 
 	<script src="./assets/js/cart.js"></script>
 </body>

@@ -34,7 +34,7 @@ Plants  Collection
 
 	<form action="./SearchItem">
 		<div class="search_box">
-			<input type="search" id="search" placeholder="search product" name="search" title="enter a valid plantname/special characters,numbers are not allowed"
+			<input type="search" id="search" placeholder="Search Product" name="search" title="enter a valid plantname/special characters,numbers are not allowed"
 				pattern="[A-Za-z]+">
 
 

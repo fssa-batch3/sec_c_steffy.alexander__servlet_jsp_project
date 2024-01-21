@@ -49,7 +49,7 @@
 	<h3 id="address_head">Address Details</h3>
 	<form id="payment_form" action="./PlaceOrder" method="post">
 
-		<label for="fname">Name <input id="fname" type="text" pattern="[A-Za-z ]+"  title="Name should contain only alphabets (A-Z, a-z)"
+		<label for="fname">Name <input id="fname" type="text" pattern="[A-Za-z ]+"  title="Name should contain only alphabets (A-Z, a-z)" name="name"
 			value="<%=userName%>" required />
 		</label><br /> <br /> <br /> <label for="Email">Email Address <input
 			id="email" type="text" value="<%=email%>" required disabled />

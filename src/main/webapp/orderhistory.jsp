@@ -1,5 +1,5 @@
 <%@page import="com.fssa.veeblooms.model.Plant"%>
-<%@page import="com.fssa.veeblooms.dao.PlantDAO"%>
+<%@page import="com.fssa.veeblooms.dao.*"%>
 <%@page import="com.fssa.veeblooms.model.OrderedProduct"%>
 <%@page import="com.fssa.veeblooms.model.Order"%>
 <%@page import="java.util.ArrayList"%>
@@ -35,13 +35,12 @@ My Orders
 </p>
 </div>
 
-	
-
 		<div class="orderContents">
 
 			<%
 		for (Order order : orderDetails) {
-%>
+		
+			%>
 			<div class="orderContent">
 				<div class="orderHeading flex">
 					<div class="orderedOn">
@@ -49,7 +48,7 @@ My Orders
 						<%=order.getStatus().toString() %>
 						 on :<span id="date"> <%=order.getModifiedDate() %></span>
 						</h4>
-						<p id="name">By <%%>Steffy</p>
+						<p id="name">By <%=order.getName() %></p>
 					</div>
 					<div class="totalNoProducts">
 						<h3 id="Quantity">Qt: <span id="valnum"><%=order.getProductsList().size() %></span></h3>

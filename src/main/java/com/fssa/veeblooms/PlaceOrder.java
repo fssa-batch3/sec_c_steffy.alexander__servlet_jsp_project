@@ -43,11 +43,11 @@ public class PlaceOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
-	}
-
+	}           
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		String name= request.getParameter("name");
 		User user = (User) session.getAttribute("LoggedUser");
 		if (user == null) {
 			request.setAttribute("errorMsg", "Login / Session Expired");
@@ -82,7 +82,7 @@ public class PlaceOrder extends HttpServlet {
 					totalAmount += cart.getTotalAmount();
 
 				}
-
+				order.setName(name);
 				order.setTotalAmount(totalAmount);
 				order.setProductsList(productsList);
 				order.setOrderedDate(LocalDate.now());
