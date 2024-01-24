@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Document</title>
+<title>Cart</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
 	rel="stylesheet" />
@@ -28,16 +28,14 @@
 	ArrayList<Cart> cartDetails = (ArrayList<Cart>) request.getAttribute("cartDetails");
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
+	<%
+	if (cartDetails.size() != 0) {
+	%>
 
 
-<div class="container">
-<p>
-Shopping Cart
-</p>
-</div>
-<%if(cartDetails.size()!=0){
-	
-%>
+	<div class="container">
+		<p>Shopping Cart</p>
+	</div>
 
 	<div class="cartContents">
 
@@ -54,9 +52,9 @@ Shopping Cart
 
 		<%
 		Plant plant = null;
-		double totalPrice =0;
+		double totalPrice = 0;
 		for (Cart cart : cartDetails) {
-			totalPrice+=cart.getTotalAmount();
+			totalPrice += cart.getTotalAmount();
 
 			plant = PlantDAO.getPlantById(cart.getPlantId());
 		%>
@@ -92,21 +90,16 @@ Shopping Cart
 		}
 		%>
 		<br>
-			
+
 
 		<div class="cartContent">
-			<div class="plantDetails">
-				
-			</div>
-		
+			<div class="plantDetails"></div>
+
 			<div class="plantPriceDetails">
-				<div class="plantPriceDiv">
-					</div>
-				<div class="plantQuantityDiv">
-				Total Summary 
-				</div>
+				<div class="plantPriceDiv"></div>
+				<div class="plantQuantityDiv">Total Summary</div>
 				<div class="plantTotalPrice">
-					&#8377; 
+					&#8377;
 					<%=totalPrice%></div>
 				<div class="plantRemove">
 					<a href="./payment.jsp?totalPrice=<%=totalPrice%>"
@@ -115,21 +108,18 @@ Shopping Cart
 			</div>
 		</div>
 	</div>
-	<% 
-}
-else{
-	
-
+	<%
+	} else {
 	%>
 
-	
+
 	<div class="emptyCart">
-	<img src="./assets/images/empty_cart.png" alt="empty cart">
+		<img src="./assets/images/empty_cart.png" alt="empty cart">
 	</div>
-	
-		<%
-		}
-		%>	
+
+	<%
+	}
+	%>
 
 	<script src="./assets/js/cart.js"></script>
 </body>

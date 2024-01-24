@@ -34,6 +34,9 @@
 My Orders
 </p>
 </div>
+<%if(orderDetails.size()!=0){
+	
+%>
 
 		<div class="orderContents">
 
@@ -56,6 +59,20 @@ My Orders
 					<div class="totalPrice">
 						<h3>&#x20b9; <%=order.getTotalAmount() %> /-</h3>
 					</div>
+					
+					 <%
+					 if (!order.getStatus().toString().equals("CANCELLED")) {
+				%>
+					 
+
+					<a href="CancelOrder?orderId=<%=order.getOrderId()%>"><img id="close" placeorder="cancel order" src="./assets/images/close.png" alt="close">
+						</a>
+						
+						
+						<%
+						}
+						%>
+				 
 					<img class="dropDown" src="./assets/images/dropdown.png" />
 				</div>
 
@@ -107,7 +124,21 @@ My Orders
 			%>
 			
 		</div>
+	<% 
+}
+else{
+	
 
+	%>
+
+	
+	<div class="emptyCart">
+	<img src="./assets/images/" alt="no orders">
+	</div>
+	
+		<%
+		}
+		%>	
 	
 	<jsp:include page="./successErrorMsg.jsp"></jsp:include>
 	<script src="./assets/js/orderHistory.js"></script>
